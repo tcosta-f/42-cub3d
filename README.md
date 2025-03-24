@@ -27,6 +27,7 @@ TODO
 TODO
 
 ## Research
+### Theory
 [https://lodev.org/cgtutor/raycasting.html]
 [https://lodev.org/cgtutor/raycasting2.html]
 [https://lodev.org/cgtutor/raycasting3.html]
