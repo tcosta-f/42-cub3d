@@ -28,7 +28,10 @@ TODO
 
 ## Research
 ### Theory
-[https://lodev.org/cgtutor/raycasting.html]
-[https://lodev.org/cgtutor/raycasting2.html]
-[https://lodev.org/cgtutor/raycasting3.html]
-[https://lodev.org/cgtutor/raycasting4.html]
+[https://lodev.org/cgtutor/raycasting.html]Raycasting 1
+
+[https://lodev.org/cgtutor/raycasting2.html]Raycasting 2
+
+[https://lodev.org/cgtutor/raycasting3.html]Raycasting 3
+
+[https://lodev.org/cgtutor/raycasting4.html]Raycasting 4
