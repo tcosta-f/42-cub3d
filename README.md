@@ -34,4 +34,7 @@ TODO
 - [Raycasting 4](https://lodev.org/cgtutor/raycasting4.html)
 
 ## Tutorial
-https://github.com/codam-coding-college/MLX42
+https://github.com/gleal42/cub3d
+https://reactive.so/post/42-a-comprehensive-guide-to-cub3d/
+https://hackmd.io/@nszl/H1LXByIE2
+https://gitlab.com/madebypixel02/cub3d
