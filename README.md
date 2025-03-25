@@ -46,6 +46,8 @@ TODO
       - Has any invalid chars. Anything apart from ' ', 1, 0, N, S, E, W is invalid;
       - Is surrounded by walls;
       - Has player;
+      - Has more than 1 player;
+      - If player is inside walls, without empty spaces around it.
       - All white spaces inside the map are surrounded by walls;
       - Has no empty lines between it.
 2. Setup Window
