@@ -27,8 +27,8 @@ TODO
 TODO
 
 ## Basic Steps to Build the Thing:
-1. Parsing
-2. 1. Check first character. If inside scope (NO, SO, WE, EA, C, F, space) ok. If not, set error, exit.
+1. Checking and Parsing
+   1. Check first character. If inside scope (NO, SO, WE, EA, C, F, space) ok. If not, set error, exit.
    2. If space comes before any of these, possible map detected before configs, set error, exit.
    3. Check if we have duplicated Key. If so, set error, exit.
    4. Check any line for invalid character or key. If line starts with space before we got all keys, set error, exit.
@@ -48,13 +48,13 @@ TODO
       - Has player;
       - All white spaces inside the map are surrounded by walls;
       - Has no empty lines between it.
-3. Setup Window
+2. Setup Window
    - Open window in a size (let's look for the size in Wolf3D. I think it was 320x240)
-4. Start Game Loop
+3. Start Game Loop
    - Draw screen
    - update values
    - update screen
-5. Gracefully shutdown (Free everything)
+4. Gracefully shutdown (Free everything)
    - destroy structures
    - free everything
 
