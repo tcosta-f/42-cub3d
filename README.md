@@ -17,7 +17,7 @@
 ## Cub3D Task List:
 
 ### A. Project Setup & Preparation
-- Set up your project repository, Makefile, and libft integration (if you use it)
+- Set up your project repository, Makefile, and libft integration
 - Configure the miniLibX (MLX) library
 
 ### B. Parsing & Configuration (Parser)
@@ -93,7 +93,6 @@
 
 - **Map Specific Cases**  
   - Map not enclosed by walls (open map)  
-  - Inconsistent row lengths  
   - Multiple starting positions or none at all  
 
 - **File Issues**  
