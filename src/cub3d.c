@@ -6,33 +6,38 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/04/19 13:01:43 by alm              ###   ########.fr       */
+/*   Updated: 2025/04/21 21:46:13 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
 
 int	main(int argc, char **argv)
 {
-	// int			fd;
-	// t_list		*file_lines;
-	// t_config	config;
+	t_game		*game;
 
-	if (argc != 2)
+	if (argc == 2)
 	{
-		ft_display_error(ERR_WRNG_ARG_SIZ);
-		return (1);
+		if (ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])) == NULL)
+			return (ft_throw_error(ERR_FIL_EXTENSIO, EX_GENERICERR));
+		game = (t_game *) ft_calloc(1, sizeof(t_game));
+		if (game == NULL)
+			return (ft_throw_error(ERR_MEMORY_ALLOC, EX_GENERICERR));
+		ft_create_setup(argv[1], game);
+		// ft_parse_game_config(game, argv[1]);
+		//map = (t_map *) ft_calloc(1, sizeof(t_map));
+		ft_free_game(&game);
 	}
-	ft_printf("argv[0]: %s\n", argv[0]);
-	// fd = ft_open_file(argv[1]);
-	// if (fd < 0)
-	// 	return (1);
-	// file_lines = ft_read_file_list(fd);
-	// close(fd);
+	else
+		return (ft_throw_error(ERR_WRNG_ARG_SIZ, EX_GENERICERR));
+	
 	// if (!file_lines || !ft_validate_map_presence(file_lines))
 	// {
 	// 	write(2, "Error\nInvalid map file\n", 24);
-	// 	return (1);
+	// 	return (EX_GENERICERR);
 	// }
 	// ft_parse_config(file_lines, &config);
 	// if (!ft_validate_config(&config))

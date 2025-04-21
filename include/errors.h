@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 22:18:23 by bschwell          #+#    #+#             */
-/*   Updated: 2025/04/18 12:31:54 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/04/19 17:24:45 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@
 /* Parser errors */
 # define ERR_WRNG_ARG_SIZ   "Usage: ./cub3D <map.cub>"
 # define ERR_MISSING_CONF   "Missing configuration data"
+# define ERR_MEMORY_ALLOC   "Memory allocation error"
+# define ERR_FIL_EXTENSIO   "Invalid file extension. Must be .cub"
+# define ERR_CANNOT_RD_FL   "Can't read .cub. Either permissions or empty file"
 # define ERR_SYNTAX_ERROR	"Sintax error in color definition"
 # define ERR_INVALID_CHAR	"Invalid or mixed characters"
 # define ERR_MAP_NOT_CLOS	"Map is not enclosed by wall"
 # define ERR_STARTING_POS	"Multiple starting positions or none at all"
-# define ERR_NOT_CUB_FILE	"Wrong file extension, or empty file"
 # define ERR_ELEMNT_ORDER	"Elements in wrong order"
 # define ERR_DUPL_DFNTION	"Duplicate definition in file"
-# define ERR_EXTRA_LINES	"Extra lines after the map"
+# define ERR_EXT_LINES_MP	"Extra lines after the map"
+
 
 #endif /* ERRORS_H */
