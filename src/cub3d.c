@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/04/21 21:46:13 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/10 15:34:29 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
+
+static void		ft_init_game_struct(t_game **game)
+{
+	t_map	*map;
+	t_cfg	*cfg;
+
+	cfg = (t_cfg *) ft_calloc(1, sizeof(t_cfg));
+	map = (t_map *) ft_calloc(1, sizeof(t_map));
+	(*game)->cfg = cfg;
+	(*game)->map = map;
+}
 
 int	main(int argc, char **argv)
 {
@@ -26,9 +37,11 @@ int	main(int argc, char **argv)
 		game = (t_game *) ft_calloc(1, sizeof(t_game));
 		if (game == NULL)
 			return (ft_throw_error(ERR_MEMORY_ALLOC, EX_GENERICERR));
+		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
 		// ft_parse_game_config(game, argv[1]);
 		//map = (t_map *) ft_calloc(1, sizeof(t_map));
+		ft_print_game(&game);
 		ft_free_game(&game);
 	}
 	else

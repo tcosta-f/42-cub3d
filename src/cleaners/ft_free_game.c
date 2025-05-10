@@ -6,22 +6,22 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/04/21 21:45:44 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/10 15:35:02 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	ft_free_config(t_config *config)
+static void	ft_free_config(t_cfg *config)
 {
-	if (config->tex_north != NULL)
-		free(config->tex_north);
-	if (config->tex_south != NULL)
-		free(config->tex_south);
-	if (config->tex_west != NULL)
-		free(config->tex_west);
-	if (config->tex_east != NULL)
-		free(config->tex_east);
+	if (config->no != NULL)
+		free(config->no);
+	if (config->so != NULL)
+		free(config->so);
+	if (config->we != NULL)
+		free(config->we);
+	if (config->ea != NULL)
+		free(config->ea);
 	free(config);
 }
 
@@ -47,8 +47,8 @@ void		ft_free_game(t_game **game)
 	{
 		if ((*game)->map)
 			ft_free_map((*game)->map);
-		if ((*game)->config)
-			ft_free_config((*game)->config);
+		if ((*game)->cfg)
+			ft_free_config((*game)->cfg);
 		if ((*game)->win)
 			mlx_destroy_window((*game)->mlx, (*game)->win);
 		if ((*game)->mlx)

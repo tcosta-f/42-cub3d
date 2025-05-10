@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   parse_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcosta-f <tcosta-f@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 22:54:54 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/03/21 01:26:41 by tcosta-f         ###   ########.fr       */
+/*   Updated: 2025/05/10 15:36:14 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int		ft_parse_config(t_list *file_lines, t_config *config);
+int		ft_parse_config(t_list *file_lines, t_cfg *config);
 int		ft_parse_texture(char *line, char **texture);
 int		ft_parse_color(char *line, int *color);
 int		ft_rgb_to_int(int r, int g, int b);
-void	ft_free_config(t_config *config);
+void	ft_free_config(t_cfg *config);
 
 /**
  * @brief  Parses the configuration file and extracts textures and colors.
@@ -26,7 +26,7 @@ void	ft_free_config(t_config *config);
  * @return int         
  *         1 on success, 0 on error.
  */
-int	ft_parse_config(t_list *file_lines, t_config *config)
+int	ft_parse_config(t_list *file_lines, t_cfg *config)
 {
 	t_list	*current;
 	char	*line;
@@ -36,17 +36,17 @@ int	ft_parse_config(t_list *file_lines, t_config *config)
 	{
 		line = (char *)current->content;
 		if (ft_strncmp(line, "NO ", 3) == 0)
-			ft_parse_texture(line + 3, &config->tex_north);
+			ft_parse_texture(line + 3, &config->no);
 		else if (ft_strncmp(line, "SO ", 3) == 0)
-			ft_parse_texture(line + 3, &config->tex_south);
+			ft_parse_texture(line + 3, &config->so);
 		else if (ft_strncmp(line, "WE ", 3) == 0)
-			ft_parse_texture(line + 3, &config->tex_west);
+			ft_parse_texture(line + 3, &config->we);
 		else if (ft_strncmp(line, "EA ", 3) == 0)
-			ft_parse_texture(line + 3, &config->tex_east);
+			ft_parse_texture(line + 3, &config->ea);
 		else if (ft_strncmp(line, "F ", 2) == 0)
-			ft_parse_color(line + 2, &config->floor_color);
+			ft_parse_color(line + 2, &config->f);
 		else if (ft_strncmp(line, "C ", 2) == 0)
-			ft_parse_color(line + 2, &config->ceiling_color);
+			ft_parse_color(line + 2, &config->c);
 		current = current->next;
 	}
 	return (1);
@@ -121,10 +121,10 @@ int	ft_rgb_to_int(int r, int g, int b)
  * 
  * @param  config  The config structure to free.
  */
-void	ft_free_config(t_config *config)
+void	ft_free_config(t_cfg *config)
 {
-	free(config->tex_north);
-	free(config->tex_south);
-	free(config->tex_west);
-	free(config->tex_east);
+	free(config->no);
+	free(config->so);
+	free(config->we);
+	free(config->ea);
 }

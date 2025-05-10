@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcosta-f <tcosta-f@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:00:00 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/03/21 01:34:05 by tcosta-f         ###   ########.fr       */
+/*   Updated: 2025/05/10 15:35:02 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int		ft_extract_map(t_list *file_lines, t_config *config);
+int		ft_extract_map(t_list *file_lines, t_cfg *config);
 int		ft_count_map_lines(t_list *file_lines);
 char	**ft_copy_map(t_list *file_lines, int start_line, int map_height);
 
@@ -24,7 +24,7 @@ char	**ft_copy_map(t_list *file_lines, int start_line, int map_height);
  * @return int         
  *         1 on success, 0 on error.
  */
-int	ft_extract_map(t_list *file_lines, t_config *config)
+int	ft_extract_map(t_list *file_lines, t_cfg *config)
 {
 	t_list	*current;
 	int		start_line;

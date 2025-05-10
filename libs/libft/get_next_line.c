@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcosta-f <tcosta-f@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:42:23 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/03/06 08:05:01 by tcosta-f         ###   ########.fr       */
+/*   Updated: 2025/05/10 13:47:16 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ static int	ft_find_next_line(char *buf)
 	return (0);
 }
 
-/*   int main()
+/*    int main()
 {
 	int fd;
 	char *str;
@@ -148,4 +148,4 @@ static int	ft_find_next_line(char *buf)
 	free(str); // Add this line to free the allocated memory
 	close(fd);
 	return (0);
-}  */
+}   */

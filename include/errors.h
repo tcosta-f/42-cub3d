@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 22:18:23 by bschwell          #+#    #+#             */
-/*   Updated: 2025/04/19 17:24:45 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/10 09:08:05 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define ERR_MISSING_CONF   "Missing configuration data"
 # define ERR_MEMORY_ALLOC   "Memory allocation error"
 # define ERR_FIL_EXTENSIO   "Invalid file extension. Must be .cub"
-# define ERR_CANNOT_RD_FL   "Can't read .cub. Either permissions or empty file"
+# define ERR_CANNOT_RD_FL   "Invalid .cub file"
 # define ERR_SYNTAX_ERROR	"Sintax error in color definition"
 # define ERR_INVALID_CHAR	"Invalid or mixed characters"
 # define ERR_MAP_NOT_CLOS	"Map is not enclosed by wall"

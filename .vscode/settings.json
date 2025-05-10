@@ -60,6 +60,12 @@
     "cub3d.h": "c",
     "limits": "c",
     "fcntl.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "libft.h": "c",
+    "x.h": "c",
+    "keysym.h": "c",
+    "stdbool.h": "c",
+    "errno.h": "c",
+    "features.h": "c"
   }
 }

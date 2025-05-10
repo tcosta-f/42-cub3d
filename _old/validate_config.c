@@ -13,9 +13,9 @@
 
 #include "../include/cub3d.h"
 
-int		ft_validate_config(t_config *config);
+int		ft_validate_config(t_cfg *config);
 int		ft_validate_map_presence(t_list *file_lines);
-int		ft_validate_player_position(t_config *config);
+int		ft_validate_player_position(t_cfg *config);
 void	ft_free_split(char **split);
 
 /**
@@ -25,7 +25,7 @@ void	ft_free_split(char **split);
  * @return int     
  *         1 if valid, 0 if missing elements.
  */
-int	ft_validate_config(t_config *config)
+int	ft_validate_config(t_cfg *config)
 {
 	if (!config->tex_north || !config->tex_south || 
 		!config->tex_west || !config->tex_east)
@@ -78,7 +78,7 @@ int	ft_validate_map_presence(t_list *file_lines)
  * @return int     
  *         1 if valid, 0 if no player or multiple players are found.
  */
-int	ft_validate_player_position(t_config *config)
+int	ft_validate_player_position(t_cfg *config)
 {
 	int		i;
 	int		j;
