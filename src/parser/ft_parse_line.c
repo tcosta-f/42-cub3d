@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/05/11 13:06:10 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/11 21:34:21 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	ft_parse_cfg(char *line, t_game *game)
 		if (ft_strcmp(strs[0], "C") == 0)
 			game->cfg->c = ft_strdup(strs[1]);
 	}
+	ft_safe_free(trimmed);
 	ft_free_strs(strs);
 }
