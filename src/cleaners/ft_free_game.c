@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/05/11 12:17:58 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/11 13:27:39 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	ft_free_map(t_map *map)
 		while (map->data[i] != NULL)
 			ft_safe_free(map->data[i++]);
 	ft_safe_free(map->data);
+	ft_safe_free(map->raw_data);
 	ft_safe_free(map);
 }
 /**

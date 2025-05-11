@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/05/11 13:12:56 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/11 13:19:15 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_parse_config(int fd, t_game *game)
 	while (line)
 	{
 		trim = ft_strtrim(line, " \n");
-		if (trim[1] == '1' || trim[1] == '0' || game->cfg->start_map == true)
+		if (trim[0] == '1' || trim[0] == '0' || game->cfg->start_map == true)
 			ft_parse_map(line, game);
 		if (game->cfg->start_map == false)
 			ft_parse_cfg(line, game);
