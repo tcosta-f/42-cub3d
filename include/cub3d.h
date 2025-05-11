@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/05/10 15:43:42 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/11 13:04:44 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 typedef struct s_map
 {
 	char	**data;
+	char	*raw_data;
 	int		p_x;
 	int		p_y;
 	char	player_dir;
@@ -48,6 +49,8 @@ typedef struct s_cfg
 	char	*ea;
 	char	*f;
 	char	*c;
+	bool	valid;
+	bool	start_map;
 }	t_cfg;
 
 typedef struct s_game
@@ -69,10 +72,11 @@ void	ft_print_game(t_game **game);
 /* Cleaners */
 void	ft_error_free_all_exit(t_game *game, char *msg, bool mode, int code);
 void	ft_free_game(t_game **game);
-
+void	ft_safe_free(void *ptr);
 
 /* Parser */
-void	ft_parse_line(char *line, t_game *game);
+void	ft_parse_cfg(char *line, t_game *game);
+void	ft_parse_map(char *line, t_game *game);
 /*
 int		ft_open_file(char *filename);
 int		ft_count_tabs(char *line);

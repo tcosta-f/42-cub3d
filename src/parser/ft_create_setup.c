@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/05/10 15:37:29 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/11 13:12:56 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,21 @@ static bool	ft_check_if_dir(int fd)
 void	ft_parse_config(int fd, t_game *game)
 {
 	char	*line;
+	char	*trim;
 
-	printf("ft_parse_config: fd = %d\n", fd);
-	printf("ft_parse_config: game = %p\n", game);
-	
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_parse_line(line);
-		free(line);
+		trim = ft_strtrim(line, " \n");
+		if (trim[1] == '1' || trim[1] == '0' || game->cfg->start_map == true)
+			ft_parse_map(line, game);
+		if (game->cfg->start_map == false)
+			ft_parse_cfg(line, game);
+		ft_safe_free(trim);
+		ft_safe_free(line);
 		line = get_next_line(fd);
 	}
-	if (line)
-		free(line);
+	ft_safe_free(line);
 }
 
 static bool	ft_check_struct (t_game *game)
