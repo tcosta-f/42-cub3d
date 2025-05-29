@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/05/29 16:09:05 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:48:20 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include <unistd.h>
 #include <errno.h>
 
-static void		ft_init_color(t_color *color)
+static void	ft_init_color(t_color *color)
 {
 	color->r = -1;
 	color->g = -1;
 	color->b = -1;
 }
 
-static void		ft_init_game_struct(t_game **game)
+static void	ft_init_game_struct(t_game **game)
 {
 	t_map	*map;
 	t_cfg	*cfg;
@@ -58,33 +58,10 @@ int	main(int argc, char **argv)
 			return (ft_throw_error(ERR_MEMORY_ALLOC, EX_GENERICERR));
 		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
-		// ft_parse_game_config(game, argv[1]);
-		//map = (t_map *) ft_calloc(1, completesizeof(t_map));
 		ft_print_game(&game);
 		ft_free_game(&game);
 	}
 	else
 		return (ft_throw_error(ERR_WRNG_ARG_SIZ, EX_GENERICERR));
-	
-	// if (!file_lines || !ft_validate_map_presence(file_lines))
-	// {
-	// 	write(2, "Error\nInvalid map file\n", 24);
-	// 	return (EX_GENERICERR);
-	// }
-	// ft_parse_config(file_lines, &config);
-	// if (!ft_validate_config(&config))
-	// {
-	// 	ft_free_list(file_lines);
-	// 	ft_free_config(&config);
-	// 	return (1);
-	// }
-	// if (!ft_extract_map(file_lines, &config) || !ft_validate_player_position(&config))
-	// {
-	// 	ft_free_list(file_lines);
-	// 	ft_free_config(&config);
-	// 	return (1);
-	// }
-	// ft_free_list(file_lines);
-	// ft_free_config(&config);
 	return (0);
 }

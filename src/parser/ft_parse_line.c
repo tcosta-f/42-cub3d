@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 16:14:11 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:53:58 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_count_strs(char **strs)
 void	ft_parse_map(char *line, t_game *game)
 {
 	char	*tmp;
-	
+
 	game->cfg->start_map = true;
 	tmp = game->map->raw_data;
 	game->map->raw_data = ft_strjoin(tmp, line);
@@ -54,7 +54,6 @@ static void	ft_parse_colors(t_color *color, char *str)
 	ft_free_strs(colors_str);
 }
 
-
 /**
  * @brief parse config into file. If line is invalid, skip the line.
  * 
@@ -63,7 +62,7 @@ static void	ft_parse_colors(t_color *color, char *str)
  */
 void	ft_parse_cfg(char *line, t_game *game)
 {
-	char 	**strs;
+	char	**strs;
 	char	*trimmed;
 
 	trimmed = ft_strtrim(line, " \n");

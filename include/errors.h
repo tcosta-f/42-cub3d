@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 22:18:23 by bschwell          #+#    #+#             */
-/*   Updated: 2025/05/10 09:08:05 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:46:12 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@
 # define ERR_ELEMNT_ORDER	"Elements in wrong order"
 # define ERR_DUPL_DFNTION	"Duplicate definition in file"
 # define ERR_EXT_LINES_MP	"Extra lines after the map"
-
 
 #endif /* ERRORS_H */

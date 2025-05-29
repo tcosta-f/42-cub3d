@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 15:30:29 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/05/29 16:11:01 by bschwell         ###   ########.fr       */
+/*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
+/*   Updated: 2025/05/29 16:46:35 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _GNU_SOURCE
-# define _GNU_SOURCE
-#endif
-
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# ifndef _GNU_SOURCE
+#  define _GNU_SOURCE
+# endif
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
@@ -44,9 +44,9 @@ typedef struct s_map
 typedef struct s_color
 {
 	int	r;
-	int g;
-	int b;
-} t_color;
+	int	g;
+	int	b;
+}	t_color;
 
 typedef struct s_cfg
 {

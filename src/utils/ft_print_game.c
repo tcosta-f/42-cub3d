@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 16:10:08 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:55:01 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 	return (i);
 } */
 
-static void ft_print_color(t_color *color, char *name)
+static void	ft_print_color(t_color *color, char *name)
 {
 	printf("%s: %d | %d | %d\n", name, color->r, color->g, color->b);
 }
@@ -48,7 +48,7 @@ static void	ft_print_cfg(t_cfg *cfg)
 	printf("valid: %d\n", cfg->valid);
 }
 
-void		ft_print_game(t_game **game)
+void	ft_print_game(t_game **game)
 {
 	if (*game)
 	{
@@ -58,7 +58,7 @@ void		ft_print_game(t_game **game)
 		if ((*game)->map)
 		{
 			ft_printf("######## MAP ########\n");
-			if((*game)->map->raw_data)
+			if ((*game)->map->raw_data)
 				ft_printf("map:\n%s", (*game)->map->raw_data);
 		}
 		if ((*game)->cfg)

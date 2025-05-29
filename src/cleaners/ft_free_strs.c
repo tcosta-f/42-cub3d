@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 16:10:44 by bschwell          #+#    #+#             */
-/*   Updated: 2025/05/29 16:10:55 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:49:26 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_strs(char **strs)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (strs)

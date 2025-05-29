@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/05/11 21:33:24 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:48:59 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void	ft_free_map(t_map *map)
  * 
  * @param game 
  */
-void		ft_free_game(t_game **game)
+
+void	ft_free_game(t_game **game)
 {
 	if (*game)
 	{
