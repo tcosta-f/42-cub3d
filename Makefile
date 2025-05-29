@@ -59,4 +59,7 @@ re:	fclean all
 valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) test.cub
 
-.PHONY: all clean fclean re valgrind
+test:
+	clear && make && valgrind --leak-check=full ./cub3D test.cub 
+
+.PHONY: all clean fclean re valgrind test
