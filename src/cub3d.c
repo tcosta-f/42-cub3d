@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/05/29 16:48:20 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:41:52 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	ft_init_game_struct(t_game **game)
 	ft_init_color(f);
 	(*game)->cfg->c = c;
 	(*game)->cfg->f = f;
+	(*game)->mlx = mlx_init();
 }
 
 int	main(int argc, char **argv)

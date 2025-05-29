@@ -6,14 +6,14 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 16:53:03 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:02:44 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 /**
- * @brief Check if File Descriptor is actually a directory
+ * @brief Check if File Descriptor is a directory
  * 
  * @param fd 
  * @return true 
@@ -33,6 +33,12 @@ static bool	ft_check_if_dir(int fd)
 	return (false);
 }
 
+/**
+ * @brief Parse config file into structure
+ * 
+ * @param fd
+ * @param game
+ */
 static void	ft_parse_config(int fd, t_game *game)
 {
 	char	*line;
@@ -53,9 +59,12 @@ static void	ft_parse_config(int fd, t_game *game)
 	ft_safe_free(line);
 }
 
-static bool	ft_check_struct(t_game *game)
+static bool	ft_check_struct(t_cfg *cfg, void* mlx)
 {
-	ft_printf("ft_check_struct: game = %p\n", game);
+	// check textures:
+	if (!ft_val_tex(cfg->no, mlx) || !ft_val_tex(cfg->so, mlx) ||
+		!ft_val_tex(cfg->we, mlx) || !ft_val_tex(cfg->ea, mlx))
+		return (false);
 	return (true);
 }
 
@@ -74,6 +83,6 @@ void	ft_create_setup(char *file, t_game *game)
 		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
 	fd = open(file, O_RDONLY);
 	ft_parse_config(fd, game);
-	ft_check_struct(game);
+	ft_check_struct(game->cfg, game->mlx);
 	close(fd);
 }

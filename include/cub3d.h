@@ -6,7 +6,7 @@
 /*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/05/29 16:46:35 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:02:07 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,10 @@ void	ft_free_strs(char **strs);
 /* Parser */
 void	ft_parse_cfg(char *line, t_game *game);
 void	ft_parse_map(char *line, t_game *game);
+
+/* Validator */
+bool	ft_val_tex(char *file, void* mlx);
+
 /*
 int		ft_open_file(char *filename);
 int		ft_count_tabs(char *line);
