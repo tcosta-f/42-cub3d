@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/05/11 13:04:44 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:11:01 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,23 @@ typedef struct s_map
 	char	player_dir;
 }	t_map;
 
+typedef struct s_color
+{
+	int	r;
+	int g;
+	int b;
+} t_color;
+
 typedef struct s_cfg
 {
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*f;
-	char	*c;
+	t_color	*f;
+	t_color	*c;
+	char	*strc;
+	char	*strf;
 	bool	valid;
 	bool	start_map;
 }	t_cfg;
@@ -73,6 +82,7 @@ void	ft_print_game(t_game **game);
 void	ft_error_free_all_exit(t_game *game, char *msg, bool mode, int code);
 void	ft_free_game(t_game **game);
 void	ft_safe_free(void *ptr);
+void	ft_free_strs(char **strs);
 
 /* Parser */
 void	ft_parse_cfg(char *line, t_game *game);
