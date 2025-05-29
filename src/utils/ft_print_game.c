@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/05/11 12:58:19 by alm              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:10:08 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+/* static int	ft_print_strs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+	{
+		printf("STR[%d]: %s\n", i, strs[i]);
+		i++;
+	}
+	return (i);
+} */
+
+static void ft_print_color(t_color *color, char *name)
+{
+	printf("%s: %d | %d | %d\n", name, color->r, color->g, color->b);
+}
 
 static void	ft_print_cfg(t_cfg *cfg)
 {
@@ -24,9 +42,9 @@ static void	ft_print_cfg(t_cfg *cfg)
 	if (cfg->ea)
 		printf("EA: %s\n", cfg->ea);
 	if (cfg->f)
-		printf("F: %s\n", cfg->f);
+		ft_print_color(cfg->f, "F");
 	if (cfg->c)
-		printf("C: %s\n", cfg->f);
+		ft_print_color(cfg->c, "C");
 	printf("valid: %d\n", cfg->valid);
 }
 
