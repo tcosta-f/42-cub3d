@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 18:18:00 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:14:17 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ static void	ft_parse_colors(t_color *color, char *str)
 	ft_free_strs(colors_str);
 }
 
+static void	ft_check_n_store_cfg(char *val, char **cfg_item, t_cfg *cfg)
+{
+	if (*cfg_item == NULL)
+		*cfg_item = ft_strdup(val);
+	else
+		cfg->dup_val = true;
+		
+}
+
 /**
  * @brief parse config into file. If line is invalid, skip the line.
  * 
@@ -73,13 +82,13 @@ void	ft_parse_cfg(char *line, t_game *game)
 	if (ft_count_strs(strs) == 2)
 	{
 		if (ft_strcmp(strs[0], "NO") == 0)
-			game->cfg->no = ft_strdup(strs[1]);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->no), game->cfg);
 		if (ft_strcmp(strs[0], "SO") == 0)
-			game->cfg->so = ft_strdup(strs[1]);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->so), game->cfg);
 		if (ft_strcmp(strs[0], "EA") == 0)
-			game->cfg->ea = ft_strdup(strs[1]);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->ea), game->cfg);
 		if (ft_strcmp(strs[0], "WE") == 0)
-			game->cfg->we = ft_strdup(strs[1]);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->we), game->cfg);
 		if (ft_strcmp(strs[0], "F") == 0)
 			ft_parse_colors(game->cfg->f, strs[1]);
 		if (ft_strcmp(strs[0], "C") == 0)

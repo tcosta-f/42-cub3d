@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/28 18:21:56 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 22:57:41 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ static void	ft_init_color(t_color *color)
 	color->b = -1;
 }
 
+static void	ft_init_cfg(t_cfg **cfg)
+{
+	(*cfg)->valid = false;
+	(*cfg)->start_map = false;
+	(*cfg)->no = NULL;
+	(*cfg)->so = NULL;
+	(*cfg)->we = NULL;
+	(*cfg)->ea = NULL;
+	(*cfg)->dup_val = false;
+	(*cfg)->strc = NULL;
+	(*cfg)->strf = NULL;
+
+}
+
 static void	ft_init_game_struct(t_game **game)
 {
 	t_map	*map;
@@ -30,8 +44,7 @@ static void	ft_init_game_struct(t_game **game)
 	t_color	*c;
 
 	cfg = (t_cfg *) ft_calloc(1, sizeof(t_cfg));
-	cfg->valid = false;
-	cfg->start_map = false;
+	ft_init_cfg(&cfg);
 	map = (t_map *) ft_calloc(1, sizeof(t_map));
 	map->data = NULL;
 	map->raw_data = ft_calloc(1, sizeof(char));

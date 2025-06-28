@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 17:33:35 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:16:05 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	ft_parse_config(int fd, t_game *game)
 		trim = ft_strtrim(line, " \n");
 		if (trim[0] == '1' || trim[0] == '0' || game->cfg->start_map == true)
 			ft_parse_map(line, game);
-		if (game->cfg->start_map == false)
+		if (game->cfg->start_map == false && game->cfg->dup_val == false)
 			ft_parse_cfg(line, game);
 		ft_safe_free(trim);
 		ft_safe_free(line);
@@ -69,7 +69,8 @@ static bool	ft_check_config(t_cfg *cfg, void* mlx)
 	if (cfg->c->r == -1 || cfg->c->g == -1 || cfg->c->b == -1 ||
 		cfg->f->r == -1 || cfg->f->g == -1 || cfg->f->b == -1)
 		return (false);
-	/* if (ft_check_map(cfg->)) */
+	if (cfg->dup_val == true)
+		return (false);
 	return (true);
 }
 
@@ -88,7 +89,7 @@ void	ft_create_setup(char *file, t_game *game)
 		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
 	fd = open(file, O_RDONLY);
 	ft_parse_config(fd, game);
-	if (ft_check_config(game->cfg, game->mlx))
+	if (ft_check_config(game->cfg, game->mlx) && ft_check_map(game->map))
 		game->cfg->valid = true;
 	close(fd);
 }

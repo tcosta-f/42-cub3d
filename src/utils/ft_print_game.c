@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 17:33:10 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:11:41 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	ft_print_cfg(t_cfg *cfg)
 	if (cfg->c)
 		ft_print_color(cfg->c, "C");
 	printf("valid: %d\n", cfg->valid);
+	printf("dup_val: %d\n", cfg->dup_val);
 }
 
 void	ft_print_game(t_game **game)
