@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_setup.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 18:02:44 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:21:38 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,15 @@ static void	ft_parse_config(int fd, t_game *game)
 	ft_safe_free(line);
 }
 
-static bool	ft_check_struct(t_cfg *cfg, void* mlx)
+static bool	ft_check_config(t_cfg *cfg, void* mlx)
 {
 	// check textures:
-	if (!ft_val_tex(cfg->no, mlx) || !ft_val_tex(cfg->so, mlx) ||
-		!ft_val_tex(cfg->we, mlx) || !ft_val_tex(cfg->ea, mlx))
+	if (!ft_val_texture(cfg->no, mlx) || !ft_val_texture(cfg->so, mlx) ||
+		!ft_val_texture(cfg->we, mlx) || !ft_val_texture(cfg->ea, mlx))
+		return (false);
+	// check if colors have all values:
+	if (cfg->c->r == -1 || cfg->c->g == -1 || cfg->c->b == -1 ||
+		cfg->f->r == -1 || cfg->f->g == -1 || cfg->f->b == -1)
 		return (false);
 	return (true);
 }
@@ -83,6 +87,7 @@ void	ft_create_setup(char *file, t_game *game)
 		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
 	fd = open(file, O_RDONLY);
 	ft_parse_config(fd, game);
-	ft_check_struct(game->cfg, game->mlx);
+	if (ft_check_config(game->cfg, game->mlx))
+		game->cfg->valid = true;
 	close(fd);
 }

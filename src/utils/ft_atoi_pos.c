@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_val_tex.c                                       :+:      :+:    :+:   */
+/*   ft_atoi_pos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/28 14:16:32 by alm              ###   ########.fr       */
+/*   Created: 2024/04/18 03:17:06 by tcosta-f          #+#    #+#             */
+/*   Updated: 2025/06/28 17:21:27 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	ft_val_texture(char *file, void *mlx)
+int	ft_atoi_pos(const char *ptr)
 {
-	int	w;
-	int	h;
-	void* img;
+	int	i;
+	int	res;
 
-	img = mlx_xpm_file_to_image(mlx, file, &w, &h);
-	if (!img || w <= 0 || h <= 0)
+	i = 0;
+	res = 0;
+	if(ft_strlen(ptr) == 0)
+		return (-1);
+	while (ptr[i])
 	{
-		if (img)
-			mlx_destroy_image(mlx, img);
-		return (false);
+		if (!ft_isdigit(ptr[i]))
+			return (-1);
+		res *= 10;
+		res += (ptr[i] - '0');
+		i++;
 	}
-	if (img)
-		mlx_destroy_image(mlx, img);
-	return (true);
+	return (res);
 }

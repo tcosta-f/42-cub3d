@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 16:53:58 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:22:29 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static void	ft_parse_colors(t_color *color, char *str)
 	colors_str = ft_split(str, ',');
 	if (colors_str && ft_count_strs(colors_str) == 3)
 	{
-		color->r = ft_check_color_unit(ft_atoi(colors_str[0]));
-		color->g = ft_check_color_unit(ft_atoi(colors_str[1]));
-		color->b = ft_check_color_unit(ft_atoi(colors_str[2]));
+		color->r = ft_check_color_unit(ft_atoi_pos(colors_str[0]));
+		color->g = ft_check_color_unit(ft_atoi_pos(colors_str[1]));
+		color->b = ft_check_color_unit(ft_atoi_pos(colors_str[2]));
 	}
 	ft_free_strs(colors_str);
 }

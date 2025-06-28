@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/05/29 18:02:07 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:22:16 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ void	ft_parse_cfg(char *line, t_game *game);
 void	ft_parse_map(char *line, t_game *game);
 
 /* Validator */
-bool	ft_val_tex(char *file, void* mlx);
+bool	ft_val_texture(char *file, void* mlx);
+
+/* Utils */
+int	ft_atoi_pos(const char *ptr);
 
 /*
 int		ft_open_file(char *filename);
