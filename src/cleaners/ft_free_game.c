@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 16:48:59 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/28 18:08:36 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,8 @@ static void	ft_free_config(t_cfg *config)
 
 static void	ft_free_map(t_map *map)
 {
-	int	i;
-
-	i = 0;
-	if (map->data)
-		while (map->data[i])
-			ft_safe_free(map->data[i++]);
-	ft_safe_free(map->data);
 	ft_safe_free(map->raw_data);
+	ft_free_strs(map->data);
 	ft_safe_free(map);
 }
 /**

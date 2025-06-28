@@ -116,7 +116,7 @@ static int	ft_strlcpy_for_split(char *dst, const char *src, unsigned int size)
 	}
 	dst[i] = '\0';
 	return (i);
-}
+} 
 /* int    main(void)
 {
     char    c = ' ';
@@ -131,4 +131,4 @@ static int	ft_strlcpy_for_split(char *dst, const char *src, unsigned int size)
         i++;
     }
     return (0);
-} */
+}*/

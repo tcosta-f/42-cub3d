@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 17:22:29 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 18:18:00 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	ft_parse_map(char *line, t_game *game)
 	tmp = game->map->raw_data;
 	game->map->raw_data = ft_strjoin(tmp, line);
 	ft_safe_free(tmp);
+	if (game->map->data)
+		ft_free_strs(game->map->data);
+	game->map->data = ft_split(game->map->raw_data, '\n');
 }
 
 static int	ft_check_color_unit(int c)

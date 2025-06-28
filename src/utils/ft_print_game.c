@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/05/29 16:55:01 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:33:10 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-/* static int	ft_print_strs(char **strs)
+static int	ft_print_strs(char **strs)
 {
 	int	i;
 
@@ -23,7 +23,7 @@
 		i++;
 	}
 	return (i);
-} */
+}
 
 static void	ft_print_color(t_color *color, char *name)
 {
@@ -57,9 +57,15 @@ void	ft_print_game(t_game **game)
 		ft_printf("cfg: %p\n", (*game)->cfg);
 		if ((*game)->map)
 		{
-			ft_printf("######## MAP ########\n");
+			ft_printf("######## MAP RAW DATA ########\n");
 			if ((*game)->map->raw_data)
-				ft_printf("map:\n%s", (*game)->map->raw_data);
+				ft_printf("map raw data:\n%s", (*game)->map->raw_data);
+			ft_printf("######## MAP DATA ########\n");
+			if ((*game)->map->data)
+			{
+				ft_printf("map data:\n%s");
+				ft_print_strs((*game)->map->data);
+			}
 		}
 		if ((*game)->cfg)
 			ft_print_cfg((*game)->cfg);

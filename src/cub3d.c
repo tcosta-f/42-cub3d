@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/05/29 17:41:52 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/28 18:21:56 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_init_game_struct(t_game **game)
 	cfg->valid = false;
 	cfg->start_map = false;
 	map = (t_map *) ft_calloc(1, sizeof(t_map));
-	map->data = ft_calloc(1, sizeof(char *));
+	map->data = NULL;
 	map->raw_data = ft_calloc(1, sizeof(char));
 	c = (t_color *) ft_calloc(1, sizeof(t_color));
 	f = (t_color *) ft_calloc(1, sizeof(t_color));
