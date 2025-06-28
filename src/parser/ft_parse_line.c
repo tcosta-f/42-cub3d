@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 23:14:17 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:20:04 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,23 @@ static int	ft_check_color_unit(int c)
 	return (-1);
 }
 
-static void	ft_parse_colors(t_color *color, char *str)
+static void	ft_parse_colors(t_color *color, char *str, t_cfg *cfg)
 {
 	char	**colors_str;
 
 	colors_str = ft_split(str, ',');
-	if (colors_str && ft_count_strs(colors_str) == 3)
+	if (color->r == -1 && color->g == -1 && color->b == -1)
 	{
-		color->r = ft_check_color_unit(ft_atoi_pos(colors_str[0]));
-		color->g = ft_check_color_unit(ft_atoi_pos(colors_str[1]));
-		color->b = ft_check_color_unit(ft_atoi_pos(colors_str[2]));
+		if (colors_str && ft_count_strs(colors_str) == 3)
+		{
+			color->r = ft_check_color_unit(ft_atoi_pos(colors_str[0]));
+			color->g = ft_check_color_unit(ft_atoi_pos(colors_str[1]));
+			color->b = ft_check_color_unit(ft_atoi_pos(colors_str[2]));
+		}
+	}
+	else
+	{
+		cfg->dup_val = true;
 	}
 	ft_free_strs(colors_str);
 }
@@ -90,9 +97,9 @@ void	ft_parse_cfg(char *line, t_game *game)
 		if (ft_strcmp(strs[0], "WE") == 0)
 			ft_check_n_store_cfg(strs[1], &(game->cfg->we), game->cfg);
 		if (ft_strcmp(strs[0], "F") == 0)
-			ft_parse_colors(game->cfg->f, strs[1]);
+			ft_parse_colors(game->cfg->f, strs[1], game->cfg);
 		if (ft_strcmp(strs[0], "C") == 0)
-			ft_parse_colors(game->cfg->c, strs[1]);
+			ft_parse_colors(game->cfg->c, strs[1], game->cfg);
 	}
 	ft_safe_free(trimmed);
 	ft_free_strs(strs);
