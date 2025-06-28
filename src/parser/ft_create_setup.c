@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 23:16:05 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:17:14 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static bool	ft_check_config(t_cfg *cfg, void* mlx)
 	if (cfg->c->r == -1 || cfg->c->g == -1 || cfg->c->b == -1 ||
 		cfg->f->r == -1 || cfg->f->g == -1 || cfg->f->b == -1)
 		return (false);
+	// check if any duplicates were found
 	if (cfg->dup_val == true)
 		return (false);
 	return (true);
