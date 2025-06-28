@@ -141,22 +141,22 @@
 
 ## Basic Steps to Build the Thing:
 1. Checking and Parsing
-   1. Check first character. If inside scope (NO, SO, WE, EA, C, F, space) ok. If not, set error, exit.
-   2. If space comes before any of these, possible map detected before configs, set error, exit.
-   3. Check if we have duplicated Key. If so, set error, exit.
-   4. Check any line for invalid character or key. If line starts with space before we got all keys, set error, exit.
-   5. After a configuration key, ignore all spaces. Validate value.
-   6. 1. Is it a file? Check:
-         - Valid Filename;
-         - File Access;
-         - Are spaces AFTER the configuration info?
-         - Texture is valid? Can be stored as an Image in MinilibX?
-         - If any set error, exit.
-      2. Is it color? Check:
-         - Are all 3 values inside RGB values (between 0 and 255), with no spaces between them?
-   7. Parse Map.
+   1. ✅Check first character. If inside scope (NO, SO, WE, EA, C, F, space) ok. If not, set error, exit.
+   2. ✅If space comes before any of these, possible map detected before configs, set error, exit.
+   3. ✅Check if we have duplicated Key. If so, set error, exit.
+   4. ✅Check any line for invalid character or key. If line starts with space before we got all keys, set error, exit.
+   5. ✅After a configuration key, ignore all spaces. Validate value.
+   6. 1. ✅Is it a file? Check:
+         - ✅Valid Filename;
+         - ✅File Access;
+         - ✅Are spaces AFTER the configuration info?
+         - ✅Texture is valid? Can be stored as an Image in MinilibX?
+         - ✅If any set error, exit.
+      2. ✅Is it color? Check:
+         - ✅Are all 3 values inside RGB values (between 0 and 255), with no spaces between them?
+   7. ✅Parse Map.
    8. Check if map:
-      - Has any invalid chars. Anything apart from ' ', 1, 0, N, S, E, W is invalid;
+      - ✅Has any invalid chars. Anything apart from ' ', 1, 0, N, S, E, W is invalid;
       - Is surrounded by walls;
       - Has player;
       - Has more than 1 player;
