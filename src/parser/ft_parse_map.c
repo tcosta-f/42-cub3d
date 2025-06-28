@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 23:32:41 by alm              ###   ########.fr       */
+/*   Created: 2025/06/28 23:35:20 by alm               #+#    #+#             */
+/*   Updated: 2025/06/28 23:35:33 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	ft_check_chars(t_map *map)
+void	ft_parse_map(char *line, t_game *game)
 {
-	int	y;
-	int	x;
+	char	*tmp;
 
-	y = 0;
-	while (map->data[y])
-	{
-		x = 0;
-		while (map->data[x])
-		{
-			if (!ft_strchr("NSEW01 ", map->data[y][x]))
-				return (false);
-			x++;
-		}
-		y++;
-	}
-	return (true);
-}
-
-bool	ft_check_map(t_map *map)
-{
-	return (ft_check_chars(map));
+	game->cfg->start_map = true;
+	tmp = game->map->raw_data;
+	game->map->raw_data = ft_strjoin(tmp, line);
+	ft_safe_free(tmp);
+	if (game->map->data)
+		ft_free_strs(game->map->data);
+	game->map->data = ft_split(game->map->raw_data, '\n');
 }

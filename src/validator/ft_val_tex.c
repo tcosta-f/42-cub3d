@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/28 14:16:32 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:33:58 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 bool	ft_val_texture(char *file, void *mlx)
 {
-	int	w;
-	int	h;
-	void* img;
+	int		w;
+	int		h;
+	void	*img;
 
 	img = mlx_xpm_file_to_image(mlx, file, &w, &h);
 	if (!img || w <= 0 || h <= 0)

@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 03:17:06 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/06/28 17:21:27 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:34:20 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi_pos(const char *ptr)
 
 	i = 0;
 	res = 0;
-	if(ft_strlen(ptr) == 0)
+	if (ft_strlen(ptr) == 0)
 		return (-1);
 	while (ptr[i])
 	{

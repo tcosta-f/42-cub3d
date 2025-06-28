@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/28 22:57:41 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:32:25 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	ft_init_cfg(t_cfg **cfg)
 	(*cfg)->dup_val = false;
 	(*cfg)->strc = NULL;
 	(*cfg)->strf = NULL;
-
 }
 
 static void	ft_init_game_struct(t_game **game)

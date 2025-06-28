@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 23:20:04 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/28 23:35:34 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,6 @@ static int	ft_count_strs(char **strs)
 		while (strs[i])
 			i++;
 	return (i);
-}
-
-void	ft_parse_map(char *line, t_game *game)
-{
-	char	*tmp;
-
-	game->cfg->start_map = true;
-	tmp = game->map->raw_data;
-	game->map->raw_data = ft_strjoin(tmp, line);
-	ft_safe_free(tmp);
-	if (game->map->data)
-		ft_free_strs(game->map->data);
-	game->map->data = ft_split(game->map->raw_data, '\n');
 }
 
 static int	ft_check_color_unit(int c)
@@ -70,7 +57,6 @@ static void	ft_check_n_store_cfg(char *val, char **cfg_item, t_cfg *cfg)
 		*cfg_item = ft_strdup(val);
 	else
 		cfg->dup_val = true;
-		
 }
 
 /**
