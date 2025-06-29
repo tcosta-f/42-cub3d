@@ -6,13 +6,13 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/28 23:33:58 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 09:08:46 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	ft_val_texture(char *file, void *mlx)
+bool	ft_check_texture(char *file, void *mlx)
 {
 	int		w;
 	int		h;

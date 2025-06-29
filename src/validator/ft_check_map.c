@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 23:32:41 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 09:07:38 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ static bool	ft_check_chars(t_map *map)
 
 bool	ft_check_map(t_map *map)
 {
-	return (ft_check_chars(map));
+	if (!ft_check_chars(map))
+		return (false);
+	return (true);
 }
