@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 09:08:34 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 10:01:59 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,18 @@ static void	ft_parse_config(int fd, t_game *game)
 	while (line)
 	{
 		trim = ft_strtrim(line, " \n");
-		if (trim[0] == '1' || trim[0] == '0' || game->cfg->start_map == true)
-			ft_parse_map(line, game);
-		if (game->cfg->start_map == false && game->cfg->dup_val == false)
+		if (trim[0] == '1' || trim[0] == '0' || game->cfg->started_map == true)
+		{
+			if (game->cfg->ended_map != true)
+			{
+				// printf("l: [%s] - len: %ld\n", trim, ft_strlen(trim));
+				if (ft_strlen(trim) == 0)
+					game->cfg->ended_map = true;
+				else
+					ft_parse_map(line, game);
+			}			
+		}
+		if (game->cfg->started_map == false && game->cfg->dup_val == false)
 			ft_parse_cfg(line, game);
 		ft_safe_free(trim);
 		ft_safe_free(line);

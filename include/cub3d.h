@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/06/29 09:08:37 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 09:54:44 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct s_cfg
 	char	*strf;
 	bool	dup_val;
 	bool	valid;
-	bool	start_map;
+	bool	started_map;
+	bool	ended_map;
 }	t_cfg;
 
 typedef struct s_game
@@ -95,6 +96,7 @@ bool	ft_check_map(t_map *map);
 
 /* Utils */
 int	ft_atoi_pos(const char *ptr);
+int	ft_print_strs(char **strs);
 
 /*
 int		ft_open_file(char *filename);

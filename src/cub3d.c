@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/28 23:32:25 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 09:57:18 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	ft_init_color(t_color *color)
 static void	ft_init_cfg(t_cfg **cfg)
 {
 	(*cfg)->valid = false;
-	(*cfg)->start_map = false;
+	(*cfg)->started_map = false;
+	(*cfg)->ended_map = false;
 	(*cfg)->no = NULL;
 	(*cfg)->so = NULL;
 	(*cfg)->we = NULL;
