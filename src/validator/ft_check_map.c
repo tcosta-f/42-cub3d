@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 12:00:37 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 13:54:34 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static bool	ft_check_player(t_game *game)
 	int	x;
 
 	y = -1;
-	printf("######px: %d\n", game->map->p_x);
 	while (game->map->data[++y] != 0)
 	{
 		x = -1;
@@ -66,6 +65,8 @@ bool	ft_check_map(t_game *game)
 	if (!ft_check_chars(game))
 		return (false);
 	if (!ft_check_player(game))
+		return (false);
+	if (!ft_check_map_enclosed(game))
 		return (false);
 	return (true);
 }

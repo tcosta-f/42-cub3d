@@ -155,15 +155,15 @@
       2. ✅Is it color? Check:
          - ✅Are all 3 values inside RGB values (between 0 and 255), with no spaces between them?
    7. ✅Parse Map.
-   8. Check if map:
+   8. ✅Check if map:
       - ✅Has any invalid chars. Anything apart from ' ', 1, 0, N, S, E, W is invalid;
-      - Is surrounded by walls;
-      - Has player;
-      - Has more than 1 player;
-      - If player is inside walls, without empty spaces around it.
-      - All white spaces inside the map are surrounded by walls;
+      - ✅Is surrounded by walls;
+      - ✅Has player;
+      - ✅Has more than 1 player;
+      - ✅If player is inside walls, without empty spaces around it.
+      - ✅All white spaces inside the map are surrounded by walls;
       - ✅Has no empty lines between it.
-      - No player or 0 can be near a ' ' (space);
+      - ✅No player or 0 can be near a ' ' (space);
 2. Setup Window
    - Open window in a size (let's look for the size in Wolf3D. I think it was 320x240)
 3. Start Game Loop
