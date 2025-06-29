@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 10:01:59 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 10:34:47 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static void	ft_parse_config(int fd, t_game *game)
 		{
 			if (game->cfg->ended_map != true)
 			{
-				// printf("l: [%s] - len: %ld\n", trim, ft_strlen(trim));
 				if (ft_strlen(trim) == 0)
 					game->cfg->ended_map = true;
 				else
