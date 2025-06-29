@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 10:34:47 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 11:28:35 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_create_setup(char *file, t_game *game)
 		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
 	fd = open(file, O_RDONLY);
 	ft_parse_config(fd, game);
-	if (ft_check_config(game->cfg, game->mlx) && ft_check_map(game->map))
+	if (ft_check_config(game->cfg, game->mlx) && ft_check_map(game))
 		game->cfg->valid = true;
 	close(fd);
 }

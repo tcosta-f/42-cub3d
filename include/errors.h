@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 22:18:23 by bschwell          #+#    #+#             */
-/*   Updated: 2025/05/29 16:46:12 by bschwell         ###   ########.fr       */
+/*   Updated: 2025/06/29 11:47:31 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define ERR_FIL_EXTENSIO   "Invalid file extension. Must be .cub"
 # define ERR_CANNOT_RD_FL   "Invalid .cub file"
 # define ERR_SYNTAX_ERROR	"Sintax error in color definition"
-# define ERR_INVALID_CHAR	"Invalid or mixed characters"
+# define ERR_INVALID_CHAR	"Invalid or mixed characters in map"
 # define ERR_MAP_NOT_CLOS	"Map is not enclosed by wall"
 # define ERR_STARTING_POS	"Multiple starting positions or none at all"
 # define ERR_ELEMNT_ORDER	"Elements in wrong order"

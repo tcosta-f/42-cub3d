@@ -162,7 +162,7 @@
       - Has more than 1 player;
       - If player is inside walls, without empty spaces around it.
       - All white spaces inside the map are surrounded by walls;
-      - Has no empty lines between it.
+      - ✅Has no empty lines between it.
       - No player or 0 can be near a ' ' (space);
 2. Setup Window
    - Open window in a size (let's look for the size in Wolf3D. I think it was 320x240)

@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/06/29 09:54:44 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 11:29:53 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_parse_map(char *line, t_game *game);
 
 /* Validator */
 bool	ft_check_texture(char *file, void* mlx);
-bool	ft_check_map(t_map *map);
+bool	ft_check_map(t_game *game);
 
 /* Utils */
 int	ft_atoi_pos(const char *ptr);
