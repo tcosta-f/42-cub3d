@@ -6,12 +6,18 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 23:35:34 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 21:40:52 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/**
+ * @brief Count strings in array
+ * 
+ * @param strs 
+ * @return int 
+ */
 static int	ft_count_strs(char **strs)
 {
 	int	i;
@@ -23,6 +29,12 @@ static int	ft_count_strs(char **strs)
 	return (i);
 }
 
+/**
+ * @brief Check if color units are within range (0..255)
+ * 
+ * @param c 
+ * @return int 
+ */
 static int	ft_check_color_unit(int c)
 {
 	if (c >= 0 && c <= 255)
@@ -30,6 +42,13 @@ static int	ft_check_color_unit(int c)
 	return (-1);
 }
 
+/**
+ * @brief Parse the colors into structure
+ * 
+ * @param color Color to be parsed
+ * @param str 	String to parse
+ * @param cfg 	Config struct to save
+ */
 static void	ft_parse_colors(t_color *color, char *str, t_cfg *cfg)
 {
 	char	**colors_str;
@@ -51,6 +70,14 @@ static void	ft_parse_colors(t_color *color, char *str, t_cfg *cfg)
 	ft_free_strs(colors_str);
 }
 
+/**
+ * @brief 	Check if a Config Item exists. If not, save it.
+ * 			If exists, create flag to throw error
+ * 
+ * @param val 			Value to be stored
+ * @param cfg_item 		Config item to be stored
+ * @param cfg 			Config structure to be saved
+ */
 static void	ft_check_n_store_cfg(char *val, char **cfg_item, t_cfg *cfg)
 {
 	if (*cfg_item == NULL)

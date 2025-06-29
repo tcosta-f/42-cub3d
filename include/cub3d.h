@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/06/29 13:56:11 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 21:28:35 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@
 # include "colors.h"
 # include "errors.h"
 
+/**
+ * @brief 
+ * @param data	 	2 dimension array with serialized map
+ * @param raw_data	string with all '\n' that represents the map
+ * @param p_x		initial player position X
+ * @param p_y		initial player position Y
+ */
 typedef struct s_map
 {
 	char	**data;
@@ -48,6 +55,16 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
+/**
+ * @brief 
+ * @param strc	 		Color String representation as in the .cub file
+ * @param strf			Color String representation as in the .cub file
+ * @param dup_val		Is there a duplicate value?
+ * @param valid			Is cfg valid?
+ * @param started_map	Started the parser to read map?
+ * @param ended_map		Ended reading map? (to see if there is
+ * 						something after it)
+ */
 typedef struct s_cfg
 {
 	char	*no;
@@ -91,40 +108,12 @@ void	ft_parse_cfg(char *line, t_game *game);
 void	ft_parse_map(char *line, t_game *game);
 
 /* Validator */
-bool	ft_check_texture(char *file, void* mlx);
+bool	ft_check_texture(char *file, void *mlx);
 bool	ft_check_map(t_game *game);
 bool	ft_check_map_enclosed(t_game *game);
 
 /* Utils */
-int	ft_atoi_pos(const char *ptr);
-int	ft_print_strs(char **strs);
-
-/*
-int		ft_open_file(char *filename);
-int		ft_count_tabs(char *line);
-void	ft_expand_tabs(char *src, char *dest);
-char	*ft_replace_tabs(char *line);
-t_list	*ft_read_file_list(int fd);
-void	ft_free_list(t_list *list);
-void	ft_print_list(t_list *list);
-int		main(int argc, char **argv); */
-
-/* parse_config.c */
-/* int		ft_parse_config(t_list *file_lines, t_cfg *config);
-int		ft_parse_texture(char *line, char **texture);
-int		ft_parse_color(char *line, int *color);
-int		ft_rgb_to_int(int r, int g, int b);
-void	ft_free_config(t_cfg *config); */
-
-/* validate_config.c */
-/* int		ft_validate_config(t_cfg *config);
-int		ft_validate_map_presence(t_list *file_lines);
-int		ft_validate_player_position(t_cfg *config);
-void	ft_free_split(char **split); */
-
-/* extract_map.c */
-/* int		ft_extract_map(t_list *file_lines, t_cfg *config);
-int		ft_count_map_lines(t_list *file_lines);
-char	**ft_copy_map(t_list *file_lines, int start_line, int map_height); */
+int		ft_atoi_pos(const char *ptr);
+int		ft_print_strs(char **strs);
 
 #endif

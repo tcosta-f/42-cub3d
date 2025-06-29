@@ -6,12 +6,20 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 03:17:06 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/06/28 23:34:20 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 21:43:01 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/**
+ * @brief 	ATOI variant that only processes
+ * 			positive ints and returns -1 in case of error.
+ * 			Used in color parsing.
+ * 
+ * @param ptr 	pointer to be converted
+ * @return int 	value converted
+ */
 int	ft_atoi_pos(const char *ptr)
 {
 	int	i;

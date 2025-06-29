@@ -6,17 +6,28 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 10:05:04 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 21:43:39 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/**
+ * @brief Prints color structure to check it
+ * 
+ * @param color 
+ * @param name 
+ */
 static void	ft_print_color(t_color *color, char *name)
 {
 	printf("%s: %d | %d | %d\n", name, color->r, color->g, color->b);
 }
 
+/**
+ * @brief Prints config structure to check it
+ * 
+ * @param cfg 
+ */
 static void	ft_print_cfg(t_cfg *cfg)
 {
 	printf("\n######## CFG ########\n");
@@ -36,6 +47,11 @@ static void	ft_print_cfg(t_cfg *cfg)
 	printf("dup_val: %d\n", cfg->dup_val);
 }
 
+/**
+ * @brief Prints game struct to check it
+ * 
+ * @param game 
+ */
 void	ft_print_game(t_game **game)
 {
 	if (*game)

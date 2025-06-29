@@ -6,12 +6,19 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 13:54:34 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 21:36:00 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/**
+ * @brief Check if all characters in map are valid
+ * 
+ * @param game 		Game struct
+ * @return true 	All characters are valid
+ * @return false 	There is at least 1 invalid
+ */
 static bool	ft_check_chars(t_game *game)
 {
 	int	y;
@@ -32,6 +39,14 @@ static bool	ft_check_chars(t_game *game)
 	return (true);
 }
 
+/**
+ * @brief 	Check for errors with the player position:
+ * 			Checks for existance, and duplication.
+ * 
+ * @param game 		Game pointer
+ * @return true 	If all is ok
+ * @return false 	If not
+ */
 static bool	ft_check_player(t_game *game)
 {
 	int	y;
@@ -60,6 +75,13 @@ static bool	ft_check_player(t_game *game)
 	return (true);
 }
 
+/**
+ * @brief Checks if map is valid
+ * 
+ * @param game 		game structure
+ * @return true 	if is
+ * @return false 	if not
+ */
 bool	ft_check_map(t_game *game)
 {
 	if (!ft_check_chars(game))

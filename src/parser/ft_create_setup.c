@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 11:28:35 by alm              ###   ########.fr       */
+/*   Updated: 2025/06/29 21:22:30 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
  * @brief Check if File Descriptor is a directory
  * 
  * @param fd 
- * @return true 
- * @return false 
+ * @return boolean: true or false 
  */
 
 static bool	ft_check_if_dir(int fd)
@@ -34,10 +33,10 @@ static bool	ft_check_if_dir(int fd)
 }
 
 /**
- * @brief Parse config file into structure
+ * @brief Reads each line and parse into cfg structure
  * 
- * @param fd
- * @param game
+ * @param fd	File descriptor with the file
+ * @param game	Game struct pointer
  */
 static void	ft_parse_config(int fd, t_game *game)
 {
@@ -56,7 +55,7 @@ static void	ft_parse_config(int fd, t_game *game)
 					game->cfg->ended_map = true;
 				else
 					ft_parse_map(line, game);
-			}			
+			}
 		}
 		if (game->cfg->started_map == false && game->cfg->dup_val == false)
 			ft_parse_cfg(line, game);
@@ -67,6 +66,14 @@ static void	ft_parse_config(int fd, t_game *game)
 	ft_safe_free(line);
 }
 
+/**
+ * @brief Check if config is all correct
+ * 
+ * @param cfg config pointer
+ * @param mlx minilibx pointer to check if textures are loaded
+ * @return true if all is ok
+ * @return false if not
+ */
 static bool	ft_check_config(t_cfg *cfg, void *mlx)
 {
 	if (!ft_check_texture(cfg->no, mlx) || !ft_check_texture(cfg->so, mlx)
@@ -79,7 +86,7 @@ static bool	ft_check_config(t_cfg *cfg, void *mlx)
 }
 
 /**
- * @brief Setup Game
+ * @brief Setup Game: Read the cub file, parses the config and check the map
  * 
  * @param file 	filename
  * @param game 	game struct
