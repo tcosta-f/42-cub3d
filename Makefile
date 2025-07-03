@@ -1,56 +1,62 @@
-NAME = cub3D
+###################
+#   BASIC SETUP   #
+###################
 
+NAME = cub3D
+LIBS = ./libs
+SRCS = src/cub3d.c\
+	  src/**/*.c
+
+###################
+#      LIBFT      #
+###################
+LIBFT = libft.a
+DIR_LIBFT = $(LIBS)/libft
+
+###################
+#    MINILIB-X    #
+###################
+MLX = libmlx.a
+DIR_MLX = $(LIBS)/minilibx
+MLXFLAGS = -L $(DIR_MLX) -lmlx -lXext -lX11
+
+###################
+#   COMMON CONF   #
+###################
+OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-
-SRC_DIR = src
-OBJ_DIR = obj
-LIB_DIR = lib
-LIBFT_DIR = $(LIB_DIR)/libft
-MLX_DIR = $(LIB_DIR)/minilibx
-
-LIBFT = $(LIBFT_DIR)/libft.a
-MLX = $(MLX_DIR)/libmlx.a
-
-INCLUDES = -I include -I $(LIBFT_DIR) -I $(MLX_DIR)
-
-MLX_FLAGS = -L $(MLX_DIR) -lmlx -L $(LIBFT_DIR) -lft -lX11 -lXext -lm
-
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-
-OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+RM = rm -f
 
 all: $(NAME)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+$(DIR_LIBFT)/$(LIBFT):
+	$(MAKE) -C $(DIR_LIBFT)
+	$(MAKE) bonus -C $(DIR_LIBFT)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(DIR_MLX)/$(MLX):
+	$(MAKE) -C $(DIR_MLX)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(DIR_LIBFT)/$(LIBFT) $(DIR_MLX)/$(MLX) $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) $(DIR_LIBFT)/$(LIBFT) $(MLXFLAGS) -o $(NAME)
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
 
-$(MLX):
-	make -C $(MLX_DIR)
+clean:
+	$(MAKE) clean -C $(DIR_LIBFT)
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(MAKE) fclean -C $(DIR_LIBFT)
+	$(RM) $(NAME)
+
+norm: 
+	norminette libs/libft src
+
+re:	fclean all
 
 valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) test.cub
 
-clean:
-	rm -rf $(OBJ_DIR)
-	make clean -C $(LIBFT_DIR)
-	make clean -C $(MLX_DIR)
-
-fclean: clean
-	rm -f $(NAME)
-	make fclean -C $(LIBFT_DIR)
-
-re: fclean all
-
-bonus: $(NAME)
-
-.PHONY: all clean fclean re bonus valgrind
+.PHONY: all clean fclean re valgrind

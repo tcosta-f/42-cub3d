@@ -1,0 +1,106 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_create_setup.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
+/*   Updated: 2025/06/29 21:22:30 by alm              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/cub3d.h"
+
+/**
+ * @brief Check if File Descriptor is a directory
+ * 
+ * @param fd 
+ * @return boolean: true or false 
+ */
+
+static bool	ft_check_if_dir(int fd)
+{
+	char	buf;
+
+	if (read(fd, &buf, 1) < 0 && errno == EISDIR)
+	{
+		close(fd);
+		return (true);
+	}
+	close(fd);
+	return (false);
+}
+
+/**
+ * @brief Reads each line and parse into cfg structure
+ * 
+ * @param fd	File descriptor with the file
+ * @param game	Game struct pointer
+ */
+static void	ft_parse_config(int fd, t_game *game)
+{
+	char	*line;
+	char	*trim;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		trim = ft_strtrim(line, " \n");
+		if (trim[0] == '1' || trim[0] == '0' || game->cfg->started_map == true)
+		{
+			if (game->cfg->ended_map != true)
+			{
+				if (ft_strlen(trim) == 0)
+					game->cfg->ended_map = true;
+				else
+					ft_parse_map(line, game);
+			}
+		}
+		if (game->cfg->started_map == false && game->cfg->dup_val == false)
+			ft_parse_cfg(line, game);
+		ft_safe_free(trim);
+		ft_safe_free(line);
+		line = get_next_line(fd);
+	}
+	ft_safe_free(line);
+}
+
+/**
+ * @brief Check if config is all correct
+ * 
+ * @param cfg config pointer
+ * @param mlx minilibx pointer to check if textures are loaded
+ * @return true if all is ok
+ * @return false if not
+ */
+static bool	ft_check_config(t_cfg *cfg, void *mlx)
+{
+	if (!ft_check_texture(cfg->no, mlx) || !ft_check_texture(cfg->so, mlx)
+		|| !ft_check_texture(cfg->we, mlx) || !ft_check_texture(cfg->ea, mlx)
+		|| cfg->c->r == -1 || cfg->c->g == -1 || cfg->c->b == -1
+		|| cfg->f->r == -1 || cfg->f->g == -1 || cfg->f->b == -1
+		|| cfg->dup_val == true)
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief Setup Game: Read the cub file, parses the config and check the map
+ * 
+ * @param file 	filename
+ * @param game 	game struct
+ */
+void	ft_create_setup(char *file, t_game *game)
+{
+	int		fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1 || ft_check_if_dir(fd) == true)
+		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
+	fd = open(file, O_RDONLY);
+	ft_parse_config(fd, game);
+	if (ft_check_config(game->cfg, game->mlx) && ft_check_map(game))
+		game->cfg->valid = true;
+	close(fd);
+}

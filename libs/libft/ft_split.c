@@ -116,19 +116,19 @@ static int	ft_strlcpy_for_split(char *dst, const char *src, unsigned int size)
 	}
 	dst[i] = '\0';
 	return (i);
-}
+} 
 /* int    main(void)
 {
     char    c = ' ';
-    char    s1[] = "hello!";
+    char    s1[] = "     h    e     l     l             o      !          ";
     char    **strs;
     int        i = 0;
 
-    strs = ft_split("xxxxxxxxhello!", 'x');
+    strs = ft_split(s1, ' ');
     while (strs[i] != NULL)
     {
         printf("%s\n", strs[i]);
         i++;
     }
     return (0);
-} */
+}*/
