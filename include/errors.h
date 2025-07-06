@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 22:18:23 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/29 11:47:31 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/06 17:58:33 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define ERR_STARTING_POS	"Multiple starting positions or none at all"
 # define ERR_ELEMNT_ORDER	"Elements in wrong order"
 # define ERR_DUPL_DFNTION	"Duplicate definition in file"
+# define ERR_READ_TEXTURE	"Error while reading textures"
 # define ERR_EXT_LINES_MP	"Extra lines after the map"
+# define ERR_MLX_CREATION	"Error while init mlx X connection"
 
 #endif /* ERRORS_H */

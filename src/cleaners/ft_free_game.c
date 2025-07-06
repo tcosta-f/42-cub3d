@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/06/28 18:08:36 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/06 21:13:17 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 static void	ft_free_config(t_cfg *config)
 {
-	ft_safe_free(config->no);
-	ft_safe_free(config->so);
-	ft_safe_free(config->we);
-	ft_safe_free(config->ea);
+	ft_safe_free(config->no_fil);
+	ft_safe_free(config->so_fil);
+	ft_safe_free(config->we_fil);
+	ft_safe_free(config->ea_fil);
 	ft_safe_free(config->c);
 	ft_safe_free(config->f);
 	ft_safe_free(config);
+}
+
+static void	ft_safe_free_img(void *img)
+{
+	if (img)
+		mlx_destroy_image(mlx, img);
 }
 
 static void	ft_free_map(t_map *map)

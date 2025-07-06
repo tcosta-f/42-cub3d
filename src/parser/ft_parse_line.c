@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:37:49 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 21:40:52 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/03 22:45:51 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ void	ft_parse_cfg(char *line, t_game *game)
 	if (ft_count_strs(strs) == 2)
 	{
 		if (ft_strcmp(strs[0], "NO") == 0)
-			ft_check_n_store_cfg(strs[1], &(game->cfg->no), game->cfg);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->no_fil), game->cfg);
 		if (ft_strcmp(strs[0], "SO") == 0)
-			ft_check_n_store_cfg(strs[1], &(game->cfg->so), game->cfg);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->so_fil), game->cfg);
 		if (ft_strcmp(strs[0], "EA") == 0)
-			ft_check_n_store_cfg(strs[1], &(game->cfg->ea), game->cfg);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->ea_fil), game->cfg);
 		if (ft_strcmp(strs[0], "WE") == 0)
-			ft_check_n_store_cfg(strs[1], &(game->cfg->we), game->cfg);
+			ft_check_n_store_cfg(strs[1], &(game->cfg->we_fil), game->cfg);
 		if (ft_strcmp(strs[0], "F") == 0)
 			ft_parse_colors(game->cfg->f, strs[1], game->cfg);
 		if (ft_strcmp(strs[0], "C") == 0)

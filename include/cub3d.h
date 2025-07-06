@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/06/29 21:28:35 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/06 17:58:52 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
+# include "./constants.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdbool.h> 
@@ -57,6 +58,9 @@ typedef struct s_color
 
 /**
  * @brief 
+ * @param *_fil	 		Texture file
+ * @param *_img	 		Texture image from MLX
+ * @param hw_img	 	Width or Height of NO image loaded from MLX
  * @param strc	 		Color String representation as in the .cub file
  * @param strf			Color String representation as in the .cub file
  * @param dup_val		Is there a duplicate value?
@@ -67,10 +71,16 @@ typedef struct s_color
  */
 typedef struct s_cfg
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	char	*no_fil;
+	char	*so_fil;
+	char	*we_fil;
+	char	*ea_fil;
+	void	*no_img;
+	void	*so_img;
+	void	*we_img;
+	void	*ea_img;
+	int		h_img;
+	int		w_img;
 	t_color	*f;
 	t_color	*c;
 	char	*strc;
@@ -81,12 +91,22 @@ typedef struct s_cfg
 	bool	ended_map;
 }	t_cfg;
 
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef struct s_game
 {
 	t_map		*map;
 	t_cfg		*cfg;
 	void		*mlx;
 	void		*win;
+	t_img		*img;
 }	t_game;
 
 /* Setup */
@@ -108,12 +128,15 @@ void	ft_parse_cfg(char *line, t_game *game);
 void	ft_parse_map(char *line, t_game *game);
 
 /* Validator */
-bool	ft_check_texture(char *file, void *mlx);
+bool	ft_check_texture(char *file, void **img, t_game **game, void *mlx);
 bool	ft_check_map(t_game *game);
 bool	ft_check_map_enclosed(t_game *game);
 
 /* Utils */
 int		ft_atoi_pos(const char *ptr);
 int		ft_print_strs(char **strs);
+
+/* Game Engine */
+void ft_run_game(t_game **game);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_tex.c                                     :+:      :+:    :+:   */
+/*   ft_check_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/29 21:45:12 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/06 21:13:17 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,16 @@
  * @return true 	All good
  * @return false 	Can't read it.
  */
-bool	ft_check_texture(char *file, void *mlx)
-{
-	int		w;
-	int		h;
-	void	*img;
 
-	img = mlx_xpm_file_to_image(mlx, file, &w, &h);
-	if (!img || w <= 0 || h <= 0)
+bool	ft_check_texture(char *file, void **img, t_game **game, void *mlx)
+{
+	*img = mlx_xpm_file_to_image(mlx, file, (*game)->cfg->w_img, (*game)->cfg->h_img);
+	if (!img || (*game)->cfg->w_img <= 0 || (*game)->cfg->h_img <= 0)
 	{
 		if (img)
 			mlx_destroy_image(mlx, img);
-		return (false);
+		ft_error_free_all_exit(*game, ERR_READ_TEXTURE, true, 3);
 	}
-	if (img)
-		mlx_destroy_image(mlx, img);
-	return (true);
+	if ((*game)->cfg->w_img != (*game)->cfg->h_img)
+		ft_error_free_all_exit(*game, ERR_READ_TEXTURE, true, 3);
 }
