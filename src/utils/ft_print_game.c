@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 21:43:39 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 10:28:01 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,20 @@ static void	ft_print_color(t_color *color, char *name)
 static void	ft_print_cfg(t_cfg *cfg)
 {
 	printf("\n######## CFG ########\n");
-	if (cfg->no)
-		printf("NO: %s\n", cfg->no);
-	if (cfg->so)
-		printf("SO: %s\n", cfg->so);
-	if (cfg->we)
-		printf("WE: %s\n", cfg->we);
-	if (cfg->ea)
-		printf("EA: %s\n", cfg->ea);
+	if (cfg->no_fil)
+		printf("NO: %s\n", cfg->no_fil);
+	if (cfg->so_fil)
+		printf("SO: %s\n", cfg->so_fil);
+	if (cfg->we_fil)
+		printf("WE: %s\n", cfg->we_fil);
+	if (cfg->ea_fil)
+		printf("EA: %s\n", cfg->ea_fil);
 	if (cfg->f)
 		ft_print_color(cfg->f, "F");
 	if (cfg->c)
 		ft_print_color(cfg->c, "C");
+	if (cfg->w_img && cfg->h_img)
+		printf("w x h_img: %d x %d\n", cfg->w_img, cfg->h_img);
 	printf("valid: %d\n", cfg->valid);
 	printf("dup_val: %d\n", cfg->dup_val);
 }

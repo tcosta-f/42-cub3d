@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/06/29 21:22:30 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 11:18:50 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ static void	ft_parse_config(int fd, t_game *game)
 	ft_safe_free(line);
 }
 
+void ft_create_trgb(t_color **color, int t, int r, int g, int b)
+{
+	(*color)->color = (t << 24 | r << 16 | g << 8 | b);
+}
+
 /**
  * @brief Check if config is all correct
  * 
@@ -74,15 +79,26 @@ static void	ft_parse_config(int fd, t_game *game)
  * @return true if all is ok
  * @return false if not
  */
-static bool	ft_check_config(t_cfg *cfg, void *mlx)
+static void	ft_check_config(t_game *game, void *mlx)
 {
-	if (!ft_check_texture(cfg->no, mlx) || !ft_check_texture(cfg->so, mlx)
-		|| !ft_check_texture(cfg->we, mlx) || !ft_check_texture(cfg->ea, mlx)
-		|| cfg->c->r == -1 || cfg->c->g == -1 || cfg->c->b == -1
-		|| cfg->f->r == -1 || cfg->f->g == -1 || cfg->f->b == -1
-		|| cfg->dup_val == true)
-		return (false);
-	return (true);
+	if (game->cfg->c->r == -1 || game->cfg->c->g == -1
+		|| game->cfg->c->b == -1 || game->cfg->f->r == -1
+		|| game->cfg->f->g == -1 || game->cfg->f->b == -1)
+		ft_error_free_all_exit(game, ERR_SYNTAX_ERROR, true, 3);
+	else
+	{
+		ft_create_trgb(&(game->cfg->c), 0, game->cfg->c->r,
+			game->cfg->c->g, game->cfg->c->b);
+		ft_create_trgb(&(game->cfg->f), 0, game->cfg->f->r,
+			game->cfg->f->g, game->cfg->f->b);
+	}
+
+	if (game->cfg->dup_val == true)
+		ft_error_free_all_exit(game, ERR_DUPL_DFNTION, true, 3);	
+	ft_load_texture(game->cfg->no_fil, &(game->cfg->no_img), &game, mlx);
+	ft_load_texture(game->cfg->so_fil, &(game->cfg->so_img), &game, mlx);
+	ft_load_texture(game->cfg->we_fil, &(game->cfg->we_img), &game, mlx);
+	ft_load_texture(game->cfg->ea_fil, &(game->cfg->ea_img), &game, mlx);
 }
 
 /**
@@ -100,7 +116,8 @@ void	ft_create_setup(char *file, t_game *game)
 		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
 	fd = open(file, O_RDONLY);
 	ft_parse_config(fd, game);
-	if (ft_check_config(game->cfg, game->mlx) && ft_check_map(game))
-		game->cfg->valid = true;
 	close(fd);
+	ft_check_config(game, game->mlx);
+	if(ft_check_map(game))
+		game->cfg->valid = true;
 }

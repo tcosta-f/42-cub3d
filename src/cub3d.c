@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/06/29 11:51:59 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 15:38:08 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ static void	ft_init_cfg(t_cfg **cfg)
 	(*cfg)->valid = false;
 	(*cfg)->started_map = false;
 	(*cfg)->ended_map = false;
-	(*cfg)->no = NULL;
-	(*cfg)->so = NULL;
-	(*cfg)->we = NULL;
-	(*cfg)->ea = NULL;
+	(*cfg)->no_fil = NULL;
+	(*cfg)->so_fil = NULL;
+	(*cfg)->we_fil = NULL;
+	(*cfg)->ea_fil = NULL;
+	(*cfg)->no_img = NULL;
+	(*cfg)->so_img = NULL;
+	(*cfg)->we_img = NULL;
+	(*cfg)->ea_img = NULL;
+	(*cfg)->h_img = -1;
+	(*cfg)->w_img = -1;
 	(*cfg)->dup_val = false;
 	(*cfg)->strc = NULL;
 	(*cfg)->strf = NULL;
@@ -46,10 +52,10 @@ static void	ft_init_map(t_map **map)
 
 static void	ft_init_game_struct(t_game **game)
 {
-	t_map	*map;
-	t_cfg	*cfg;
-	t_color	*f;
-	t_color	*c;
+	t_map		*map;
+	t_cfg		*cfg;
+	t_color		*f;
+	t_color		*c;
 
 	cfg = (t_cfg *) ft_calloc(1, sizeof(t_cfg));
 	ft_init_cfg(&cfg);
@@ -63,7 +69,10 @@ static void	ft_init_game_struct(t_game **game)
 	ft_init_color(f);
 	(*game)->cfg->c = c;
 	(*game)->cfg->f = f;
+	(*game)->k = (t_keys *) ft_calloc(1, sizeof(t_keys));
+	(*game)->p = (t_player *) ft_calloc(1, sizeof(t_player));
 	(*game)->mlx = mlx_init();
+	(*game)->img = ft_calloc(1, sizeof(t_img));
 }
 
 int	main(int argc, char **argv)
@@ -79,7 +88,8 @@ int	main(int argc, char **argv)
 			return (ft_throw_error(ERR_MEMORY_ALLOC, EX_GENERICERR));
 		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
-		ft_print_game(&game);
+		if(game->cfg->valid)
+			ft_run_game(&game);
 		ft_free_game(&game);
 	}
 	else

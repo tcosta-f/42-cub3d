@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 21:07:11 by alm               #+#    #+#             */
-/*   Updated: 2025/04/21 21:42:00 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 12:47:14 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,12 @@ void	ft_error_free_all_exit(t_game *game, char *msg, bool mode, int code)
 	ft_free_game(&game);
 	if (mode)
 		exit(code);
+}
+
+int		ft_handle_exit(t_game *game)
+{
+	ft_free_game(&game);
+	ft_display_msg("Thanks for playing! Bye!");
+	exit(0);
+	return (0);
 }
