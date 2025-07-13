@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/06 21:13:17 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 09:50:22 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@
  * @return false 	Can't read it.
  */
 
-bool	ft_check_texture(char *file, void **img, t_game **game, void *mlx)
+void	ft_load_texture(char *file, void **img, t_game **game, void *mlx)
 {
-	*img = mlx_xpm_file_to_image(mlx, file, (*game)->cfg->w_img, (*game)->cfg->h_img);
-	if (!img || (*game)->cfg->w_img <= 0 || (*game)->cfg->h_img <= 0)
+	int	temp_w;
+	int	temp_h;
+
+	*img = mlx_xpm_file_to_image(mlx, file, &temp_w, &temp_h);
+	if (!img || temp_w <= 0 || temp_h <= 0)
+		ft_error_free_all_exit(*game, ERR_READ_TEXTURE, true, 3);
+	if ((*game)->cfg->w_img == -1 && (*game)->cfg->h_img == -1)
 	{
-		if (img)
-			mlx_destroy_image(mlx, img);
-		ft_error_free_all_exit(*game, ERR_READ_TEXTURE, true, 3);
+		(*game)->cfg->w_img = temp_w;
+		(*game)->cfg->h_img = temp_h;
 	}
-	if ((*game)->cfg->w_img != (*game)->cfg->h_img)
-		ft_error_free_all_exit(*game, ERR_READ_TEXTURE, true, 3);
+	if ((*game)->cfg->w_img != temp_w && (*game)->cfg->h_img != temp_h)
+		ft_error_free_all_exit(*game, ERR_TEX_DIF_SIZE, true, 3);
 }

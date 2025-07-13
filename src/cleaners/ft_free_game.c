@@ -6,24 +6,28 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/07/06 21:13:17 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 09:54:47 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	ft_free_config(t_cfg *config)
+static void	ft_free_config(t_game *game)
 {
-	ft_safe_free(config->no_fil);
-	ft_safe_free(config->so_fil);
-	ft_safe_free(config->we_fil);
-	ft_safe_free(config->ea_fil);
-	ft_safe_free(config->c);
-	ft_safe_free(config->f);
-	ft_safe_free(config);
+	ft_safe_free(game->cfg->no_fil);
+	ft_safe_free(game->cfg->so_fil);
+	ft_safe_free(game->cfg->we_fil);
+	ft_safe_free(game->cfg->ea_fil);
+	ft_safe_free_img(game->mlx, game->cfg->no_img);
+	ft_safe_free_img(game->mlx, game->cfg->so_img);
+	ft_safe_free_img(game->mlx, game->cfg->we_img);
+	ft_safe_free_img(game->mlx, game->cfg->ea_img);
+	ft_safe_free(game->cfg->c);
+	ft_safe_free(game->cfg->f);
+	ft_safe_free(game->cfg);
 }
 
-static void	ft_safe_free_img(void *img)
+static void	ft_safe_free_img(void *mlx, void *img)
 {
 	if (img)
 		mlx_destroy_image(mlx, img);
@@ -48,7 +52,7 @@ void	ft_free_game(t_game **game)
 		if ((*game)->map)
 			ft_free_map((*game)->map);
 		if ((*game)->cfg)
-			ft_free_config((*game)->cfg);
+			ft_free_config((*game));
 		if ((*game)->win)
 			mlx_destroy_window((*game)->mlx, (*game)->win);
 		if ((*game)->mlx)

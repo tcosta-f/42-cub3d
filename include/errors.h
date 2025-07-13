@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 22:18:23 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/06 17:58:33 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 09:50:03 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define ERR_ELEMNT_ORDER	"Elements in wrong order"
 # define ERR_DUPL_DFNTION	"Duplicate definition in file"
 # define ERR_READ_TEXTURE	"Error while reading textures"
+# define ERR_TEX_DIF_SIZE	"Textures should have the same size"
 # define ERR_EXT_LINES_MP	"Extra lines after the map"
 # define ERR_MLX_CREATION	"Error while init mlx X connection"
 
