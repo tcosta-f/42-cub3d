@@ -64,11 +64,16 @@ static void	ft_handle_keys(t_game *game) {
 	// 	player_turn (game, RIGHT);
 }
 
+static int ft_raycast(t_game)
+{
+
+}
+
 static int render(t_game *game)
 {
 	ft_handle_keys(game);
 	ft_draw_bg(&game);
-	// raycast(game);
+	// ft_raycast(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 	return (0);
 }
