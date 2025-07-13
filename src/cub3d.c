@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/13 11:49:37 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 15:38:08 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	ft_init_game_struct(t_game **game)
 	(*game)->k = (t_keys *) ft_calloc(1, sizeof(t_keys));
 	(*game)->p = (t_player *) ft_calloc(1, sizeof(t_player));
 	(*game)->mlx = mlx_init();
-	(*game)->img = mlx_new_image((*game)->mlx, WIN_W, WIN_H);
+	(*game)->img = ft_calloc(1, sizeof(t_img));
 }
 
 int	main(int argc, char **argv)

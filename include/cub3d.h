@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/13 12:47:26 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 15:44:20 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ typedef struct s_cfg
 
 typedef struct s_img
 {
-	void	*img_ptr;
-	char	*addr;
+	void	*img;
+	char	*add;
 	int		bpp;
 	int		line_len;
 	int		endian;
@@ -167,8 +167,8 @@ int		ft_atoi_pos(const char *ptr);
 int		ft_print_strs(char **strs);
 
 /* Game Engine */
-void ft_run_game(t_game **game);
-int	ft_key_down(int key_code, t_game *game);
-int	ft_key_up(int key_code, t_game *game);
+void	ft_run_game(t_game **game);
+int		ft_key_down(int key_code, t_game *game);
+int		ft_key_up(int key_code, t_game *game);
 
 #endif
