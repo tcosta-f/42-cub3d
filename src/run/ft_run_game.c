@@ -64,10 +64,10 @@ static void	ft_handle_keys(t_game *game) {
 	// 	player_turn (game, RIGHT);
 }
 
-static int ft_raycast(t_game)
+/* static int ft_raycast(t_game)
 {
 
-}
+} */
 
 static int render(t_game *game)
 {
