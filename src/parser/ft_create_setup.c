@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/07/06 18:03:43 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 10:00:33 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	ft_parse_config(int fd, t_game *game)
  * @return true if all is ok
  * @return false if not
  */
-static bool	ft_check_config(t_game *game, void *mlx)
+static void	ft_check_config(t_game *game, void *mlx)
 {
 	if (game->cfg->c->r == -1 || game->cfg->c->g == -1
 		|| game->cfg->c->b == -1 || game->cfg->f->r == -1
@@ -82,12 +82,10 @@ static bool	ft_check_config(t_game *game, void *mlx)
 		ft_error_free_all_exit(game, ERR_SYNTAX_ERROR, true, 3);
 	if (game->cfg->dup_val == true)
 		ft_error_free_all_exit(game, ERR_DUPL_DFNTION, true, 3);	
-	ft_check_texture(game->cfg->no_fil, &(game->cfg->no_img), &game, mlx);
-		// || !ft_check_texture(game->cfg->so_fil, game,  mlx)
-		// || !ft_check_texture(game->cfg->we_fil, game,  mlx)
-		// || !ft_check_texture(game->cfg->ea_fil, game,  mlx)
-		return (false);
-	return (true);
+	ft_load_texture(game->cfg->no_fil, &(game->cfg->no_img), &game, mlx);
+	ft_load_texture(game->cfg->so_fil, &(game->cfg->so_img), &game, mlx);
+	ft_load_texture(game->cfg->we_fil, &(game->cfg->we_img), &game, mlx);
+	ft_load_texture(game->cfg->ea_fil, &(game->cfg->ea_img), &game, mlx);
 }
 
 /**
@@ -105,7 +103,8 @@ void	ft_create_setup(char *file, t_game *game)
 		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, EX_GENERICERR);
 	fd = open(file, O_RDONLY);
 	ft_parse_config(fd, game);
-	if (ft_check_config(game, game->mlx) && ft_check_map(game))
-		game->cfg->valid = true;
 	close(fd);
+	ft_check_config(game, game->mlx);
+	if(ft_check_map(game))
+		game->cfg->valid = true;
 }

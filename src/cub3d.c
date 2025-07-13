@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/03 22:34:59 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 10:43:16 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	ft_init_game_struct(t_game **game)
 	ft_init_color(f);
 	(*game)->cfg->c = c;
 	(*game)->cfg->f = f;
+	(*game)->mlx = mlx_init();
 }
 
 int	main(int argc, char **argv)
@@ -84,7 +85,6 @@ int	main(int argc, char **argv)
 			return (ft_throw_error(ERR_MEMORY_ALLOC, EX_GENERICERR));
 		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
-		ft_print_game(&game);
 		if(game->cfg->valid)
 			ft_run_game(&game);
 		ft_free_game(&game);
