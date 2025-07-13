@@ -6,13 +6,13 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 12:46:21 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 18:53:55 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	ft_key_down(int key_code, t_game *game)
+int		ft_key_down(int key_code, t_game *game)
 {
 	if (key_code == XK_ESCAPE)
 		game->k->esc = true;
@@ -35,7 +35,7 @@ int	ft_key_down(int key_code, t_game *game)
 	return (0);
 }
 
-int	ft_key_up(int key_code, t_game *game)
+int		ft_key_up(int key_code, t_game *game)
 {
 	if (key_code == XK_ESCAPE)
 		game->k->esc = false;
@@ -56,4 +56,21 @@ int	ft_key_up(int key_code, t_game *game)
 	else if (key_code == XK_DOWN)
 		game->k->down = false;
 	return (0);
+}
+
+void	ft_handle_keys(t_game *game) {
+	if (game->k->esc == true)
+		ft_handle_exit(game);
+	// if (game->k->up || game->k->w )
+	// 	player_move (game, game->p.dx * STEPS, game->p.dy * STEPS);
+	// if (game->k->down || game->k->s)
+	// 	player_move (game, game->p.dx * STEPS, game->p.dy * STEPS);
+	// if (game->k->a)
+	// 	player_move (game, game->p.dy * STEPS, game->p.dx * STEPS);
+	// if (game->k->d)
+	// 	player_move (game, game->p.dy * STEPS, game->p.dx * STEPS);
+	// if (game->k->left)
+	// 	player_turn (game, LEFT);
+	// if (game->k->right)
+	// 	player_turn (game, RIGHT);
 }

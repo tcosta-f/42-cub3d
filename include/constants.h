@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:04:27 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 11:41:15 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 18:31:50 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,20 @@
 # define XK_SD			0x0064  /* U+0064 LATIN SMALL LETTER D - right */
 # define XK_SS			0x0073  /* U+0073 LATIN SMALL LETTER S - down */
 # define XK_SW			0x0077  /* U+0077 LATIN SMALL LETTER W - up */
+
+/* Ray Casting */
+# define PI 3.1415
+# define DR 0.0174533 // 1 Degree Radian
+
+# define MAX_DIST 1000000000
+# define MAX_RAYS 400
+# define FOV 45
+# define WALL_HEIGHT 700
+
+# define PREC_DN 0.00001
+# define PREC_UP 1
+
+# define STP_INC 0.25
+# define ANG_INC 0.07
 
 #endif
