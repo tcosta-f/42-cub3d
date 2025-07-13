@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/13 09:55:12 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 12:18:12 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	color;
 }	t_color;
 
 /**
@@ -100,6 +101,31 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_keys
+{
+	bool	esc;
+	bool	up;
+	bool	down;
+	bool	left;
+	bool	right;
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+}	t_keys;
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	float	col_x;
+	float	col_y;
+	float	dx;
+	float	dy;
+	float	ang;
+	int		dir;
+}	t_player;
+
 typedef struct s_game
 {
 	t_map		*map;
@@ -107,6 +133,8 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	t_img		*img;
+	t_keys		*k;
+	t_player	*p;
 }	t_game;
 
 /* Setup */
@@ -122,6 +150,7 @@ void	ft_error_free_all_exit(t_game *game, char *msg, bool mode, int code);
 void	ft_free_game(t_game **game);
 void	ft_safe_free(void *ptr);
 void	ft_free_strs(char **strs);
+int		ft_handle_exit(t_game *game);
 
 /* Parser */
 void	ft_parse_cfg(char *line, t_game *game);
@@ -138,5 +167,7 @@ int		ft_print_strs(char **strs);
 
 /* Game Engine */
 void ft_run_game(t_game **game);
+int	ft_key_down(int key_code, t_game *game);
+int	ft_key_up(int key_code, t_game *game);
 
 #endif

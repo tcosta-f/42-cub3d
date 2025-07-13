@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:04:27 by alm               #+#    #+#             */
-/*   Updated: 2025/07/03 22:05:00 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 11:41:15 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_CONSTS_H
 
 /* Window */
-# define WIN_NAME "Cub3d"
+# define WIN_TITLE "Cub3d"
 # define WIN_W 800
 # define WIN_H 600
 

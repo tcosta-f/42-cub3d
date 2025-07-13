@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 10:00:33 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 11:18:50 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ static void	ft_parse_config(int fd, t_game *game)
 	ft_safe_free(line);
 }
 
+void ft_create_trgb(t_color **color, int t, int r, int g, int b)
+{
+	(*color)->color = (t << 24 | r << 16 | g << 8 | b);
+}
+
 /**
  * @brief Check if config is all correct
  * 
@@ -80,6 +85,14 @@ static void	ft_check_config(t_game *game, void *mlx)
 		|| game->cfg->c->b == -1 || game->cfg->f->r == -1
 		|| game->cfg->f->g == -1 || game->cfg->f->b == -1)
 		ft_error_free_all_exit(game, ERR_SYNTAX_ERROR, true, 3);
+	else
+	{
+		ft_create_trgb(&(game->cfg->c), 0, game->cfg->c->r,
+			game->cfg->c->g, game->cfg->c->b);
+		ft_create_trgb(&(game->cfg->f), 0, game->cfg->f->r,
+			game->cfg->f->g, game->cfg->f->b);
+	}
+
 	if (game->cfg->dup_val == true)
 		ft_error_free_all_exit(game, ERR_DUPL_DFNTION, true, 3);	
 	ft_load_texture(game->cfg->no_fil, &(game->cfg->no_img), &game, mlx);
