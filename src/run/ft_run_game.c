@@ -72,9 +72,9 @@ static int render(t_game *game)
 void ft_run_game(t_game **game)
 {
 	ft_init_game(game);
-	mlx_hook((*game)->win, 2, 1L << 0, ft_key_down, *game);
-	mlx_hook((*game)->win, 2, 1L << 0, ft_key_up, *game);
-	// mlx_hook((*game)->win, 17, 0, ft_handle_exit, *game);
+	mlx_hook((*game)->win, 2, (1L << 0), ft_key_down, (*game));
+	mlx_hook((*game)->win, 3, (1L << 0), ft_key_up, (*game));
+	mlx_hook((*game)->win, 17, 0, ft_handle_exit, (*game));
 	mlx_loop_hook ((*game)->mlx, render, *game);
 	mlx_loop((*game)->mlx);
 }

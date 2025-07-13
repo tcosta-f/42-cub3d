@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/13 12:18:12 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 12:36:45 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void	ft_create_setup(char *file, t_game *game);
 void	ft_display_error(char *msg);
 int		ft_throw_error(char *msg, int code);
 void	ft_print_game(t_game **game);
+void	ft_display_msg(char *msg);
 
 /* Cleaners */
 void	ft_error_free_all_exit(t_game *game, char *msg, bool mode, int code);
