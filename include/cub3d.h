@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/13 15:44:20 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 17:31:35 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_map
 	int		p_x;
 	int		p_y;
 	char	player_dir;
+	int		w;
+	int		h;
 }	t_map;
 
 typedef struct s_color
