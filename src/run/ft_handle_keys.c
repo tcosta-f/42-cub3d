@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 12:11:09 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/13 12:46:21 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_key_down(int key_code, t_game *game)
 {
-	printf("key down: %d\n", key_code);
 	if (key_code == XK_ESCAPE)
 		game->k->esc = true;
 	else if (key_code == XK_CW || key_code == XK_SW)
