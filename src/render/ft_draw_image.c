@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 22:43:23 by alm               #+#    #+#             */
-/*   Updated: 2025/07/19 18:01:27 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 18:10:19 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ static int	ft_get_pixel_color(void *texture, int x, int y, int tile_size)
 	void	*temp;
 
 	temp = mlx_get_data_addr(texture, &img.bpp, &img.line_len, &img.endian);
-	temp = 0;
-	temp = temp + (x + y * tile_size) * 4;
+	temp = temp + (x + y * 64) * 4;
 	color = *(unsigned char *)(temp + 2) << 16;
 	color |= *(unsigned char *)(temp + 1) << 8;
 	color |= *(unsigned char *)temp;
