@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/13 15:38:08 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 17:14:09 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void	ft_init_map(t_map **map)
 	(*map)->raw_data = ft_calloc(1, sizeof(char));
 	(*map)->p_x = -1;
 	(*map)->p_y = -1;
+	(*map)->w = 0;
+	(*map)->h = 0;
 }
 
 static void	ft_init_game_struct(t_game **game)
@@ -89,7 +91,10 @@ int	main(int argc, char **argv)
 		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
 		if(game->cfg->valid)
-			ft_run_game(&game);
+		{
+			ft_init_game(game);
+			ft_run_game(game);
+		}
 		ft_free_game(&game);
 	}
 	else

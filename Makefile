@@ -18,7 +18,7 @@ DIR_LIBFT = $(LIBS)/libft
 ###################
 MLX = libmlx.a
 DIR_MLX = $(LIBS)/minilibx
-MLXFLAGS = -L $(DIR_MLX) -lmlx -lXext -lX11
+MLXFLAGS = -L $(DIR_MLX) -lmlx -lXext -lX11 -lm
 
 ###################
 #   COMMON CONF   #

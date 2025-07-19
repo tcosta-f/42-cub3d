@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_rc_reset.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 02:34:29 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/07/19 16:21:21 by alm              ###   ########.fr       */
+/*   Created: 2025/07/13 21:20:13 by alm               #+#    #+#             */
+/*   Updated: 2025/07/19 11:36:55 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/cub3d.h"
 
-char	*ft_strcat(char *dest, char *src)
+void	ft_rc_reset(t_game *game, t_raycast *rc)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (dest[j] != '\0')
-	{
-		j++;
-	}
-	while (src[i] != '\0')
-	{
-		dest[j] = src[i];
-		i++;
-		j++;
-	}
-	dest[j] = '\0';
-	return (dest);
+	rc->vert_dist = 1000000000;
+	rc->hrzt_dist = 1000000000;
+	rc->dist = 1000000000;
+	if (rc->ray_ang < 0)
+		rc->ray_ang += 2 * PI;
+	if (rc->ray_ang > 2 * PI)
+		rc->ray_ang -= 2 * PI;
+	rc->dof = 0;
+	rc->hrzt_x = game->p->x;
+	rc->hrzt_y = game->p->y;
+	rc->hrzt_tan = -1 / tan (rc->ray_ang);
 }

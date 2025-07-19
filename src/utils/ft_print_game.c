@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 10:28:01 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 14:49:47 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@
 static void	ft_print_color(t_color *color, char *name)
 {
 	printf("%s: %d | %d | %d\n", name, color->r, color->g, color->b);
+}
+
+/**
+ * @brief Prints player structure to check it
+ * 
+ * @param player 
+ * @param name 
+ */
+void	ft_print_player(t_player *p)
+{
+	printf("\n######## PLAYER ########\n");
+	printf("x, y > %f, %f\n", p->x, p->y);
+	printf("col > %f, %f\n", p->col_x, p->col_y);
+	printf("dx > %f, %f\n", p->dx, p->dy);
+	printf("ang | dir > %f, %c\n", p->ang, p->dir);
 }
 
 /**

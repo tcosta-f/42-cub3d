@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_map.c                                     :+:      :+:    :+:   */
+/*   ft_draw_pixel.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 23:35:20 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 17:43:00 by alm              ###   ########.fr       */
+/*   Created: 2025/07/15 21:23:39 by alm               #+#    #+#             */
+/*   Updated: 2025/07/15 21:25:50 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	ft_parse_map(char *line, t_game *game)
+void	ft_draw_pixel(t_img *img, int x, int y, int color)
 {
-	char	*tmp;
+	unsigned char	*pixel;
+	int				i;
 
-	game->cfg->started_map = true;
-	tmp = game->map->raw_data;
-	game->map->raw_data = ft_strjoin(tmp, line);
-	game->map->h++;
-	if ((int) ft_strlen(line) >= game->map->w)
-		game->map->w = ft_strlen(line);
-	if (game->map->data)
-		ft_free_strs(game->map->data);
-	game->map->data = ft_split(game->map->raw_data, '\n');
-	ft_safe_free(tmp);
+	if (x < 0 || y < 0 || x >= WIN_W || y >= WIN_H)
+		return ;
+	i = img -> bpp - 8;
+	pixel = (unsigned char *)(img -> add + (y * img -> line_len \
+	+ x * (img -> bpp / 8)));
+	while (i >= 0)
+	{
+		if (img -> endian != 0)
+			*pixel++ = (color >> i) & 0xFF;
+		else
+			*pixel++ = (color >> (img -> bpp - 8 - i)) & 0xFF;
+		i -= 8;
+	}
 }
