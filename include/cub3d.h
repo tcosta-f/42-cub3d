@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/13 18:54:05 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 17:27:28 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
 # include "./constants.h"
+# include "colors.h"
+# include "errors.h"
+# include <math.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdbool.h> 
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <math.h>
 # include <fcntl.h>
 # include <errno.h>
-
-# include "colors.h"
-# include "errors.h"
 
 /**
  * @brief 
@@ -148,6 +147,11 @@ typedef struct s_player
 	int		dir;
 }	t_player;
 
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
 
 /**
  * @brief Raycast Structure
@@ -177,7 +181,7 @@ typedef struct s_raycast
 	float	ray_ang;
 	float	ray_x_offset;
 	float	ray_y_offset;
-	int		ray_hrzt_size;
+	int		ray_hrzt_dist;
 	float	dist;
 	float	hrzt_dist;
 	float	hrzt_x;
@@ -232,15 +236,24 @@ bool	ft_check_map_enclosed(t_game *game);
 /* Utils */
 int		ft_atoi_pos(const char *ptr);
 int		ft_print_strs(char **strs);
+float	ft_dist(float ax, float ay, float bx, float by);
+void	ft_draw_pixel(t_img *img, int x, int y, int color);
+void	ft_print_player(t_player *p);
+// DELETE
+char* 	concat_strings(char result[1000], int count, ...);
 
 /* Game Engine */
-void	ft_run_game(t_game **game);
+void	ft_init_game(t_game *game);
+void	ft_run_game(t_game *game);
 void	ft_handle_keys(t_game *game);
-int		ft_key_down(int key_code, t_game *game);
-int		ft_key_up(int key_code, t_game *game);
+int		ft_key_press(int key_code, t_game *game);
+int		ft_key_release(int key_code, t_game *game);
 
 /* Render */
-int		ft_render(t_game *game);
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
+int			ft_render(t_game *game);
+void		ft_rc_reset(t_game *game, t_raycast *rc);
+void		ft_pick_wall(t_game *game, t_raycast *rc);
+void		ft_pick_texture(t_game *game, t_raycast *rc);
+void		ft_draw_image(t_game *game, t_raycast *rc);
 
 #endif

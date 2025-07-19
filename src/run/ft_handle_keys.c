@@ -6,13 +6,13 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 18:53:55 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 17:27:28 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int		ft_key_down(int key_code, t_game *game)
+int		ft_key_press(int key_code, t_game *game)
 {
 	if (key_code == XK_ESCAPE)
 		game->k->esc = true;
@@ -35,7 +35,40 @@ int		ft_key_down(int key_code, t_game *game)
 	return (0);
 }
 
-int		ft_key_up(int key_code, t_game *game)
+static void	ft_player_move(t_game *game, double new_x, double new_y)
+{
+	int	x_forward;
+	int	y_forward;
+
+	x_forward = (int)(game->p->x + (new_x * 8) * DIFF_MV);
+	y_forward = (int)(game->p->y + (new_y * 8) * DIFF_MV);
+	if (game->map->data[(int)game->p->y][x_forward] != '1')
+	{
+		game->p->x += new_x * DIFF_MV;
+		game->p->col_x = x_forward * (WIN_W / game->map->w);
+	}
+	if (game->map->data[y_forward][(int)game->p->x] != '1')
+	{
+		game->p->y += new_y * DIFF_MV;
+		game->p->col_y = y_forward * (WIN_H / game->map->h);
+	}
+}
+
+static void	ft_player_turn(t_game *game, char dir)
+{
+	if (dir == 'L')
+		game->p->ang -= DIFF_RT + (game->p->ang < 0) * (2 * PI);
+	else
+		game->p->ang += DIFF_RT - (game->p->ang > 2) * (2 * PI);
+	if (game->p->ang < 0)
+		game->p->ang += 2 * PI;
+	if (game->p->ang > 2 * PI)
+		game->p->ang -= 2 * PI;
+	game->p->dx = cos (game->p->ang);
+	game->p->dy = sin (game->p->ang);
+}
+
+int		ft_key_release(int key_code, t_game *game)
 {
 	if (key_code == XK_ESCAPE)
 		game->k->esc = false;
@@ -61,16 +94,16 @@ int		ft_key_up(int key_code, t_game *game)
 void	ft_handle_keys(t_game *game) {
 	if (game->k->esc == true)
 		ft_handle_exit(game);
-	// if (game->k->up || game->k->w )
-	// 	player_move (game, game->p.dx * STEPS, game->p.dy * STEPS);
-	// if (game->k->down || game->k->s)
-	// 	player_move (game, game->p.dx * STEPS, game->p.dy * STEPS);
-	// if (game->k->a)
-	// 	player_move (game, game->p.dy * STEPS, game->p.dx * STEPS);
-	// if (game->k->d)
-	// 	player_move (game, game->p.dy * STEPS, game->p.dx * STEPS);
-	// if (game->k->left)
-	// 	player_turn (game, LEFT);
-	// if (game->k->right)
-	// 	player_turn (game, RIGHT);
+	if (game->k->up || game->k->w)
+		ft_player_move(game, game->p->dx * DIFF_MV, game->p->dy * DIFF_MV);
+	if (game->k->down || game->k->s)
+		ft_player_move(game, game->p->dx * DIFF_MV, game->p->dy * DIFF_MV);
+	if (game->k->a)
+		ft_player_move(game, game->p->dy * DIFF_MV, game->p->dx * DIFF_MV);
+	if (game->k->d)
+		ft_player_move(game, game->p->dy * DIFF_MV, game->p->dx * DIFF_MV);
+	if (game->k->left)
+		ft_player_turn(game, 'L');
+	if (game->k->right)
+		ft_player_turn(game, 'R');
 }

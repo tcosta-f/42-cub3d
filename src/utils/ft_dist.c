@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_dist.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 02:34:29 by tcosta-f          #+#    #+#             */
-/*   Updated: 2025/07/19 16:21:21 by alm              ###   ########.fr       */
+/*   Created: 2025/07/13 21:17:53 by alm               #+#    #+#             */
+/*   Updated: 2025/07/13 21:31:02 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/cub3d.h"
 
-char	*ft_strcat(char *dest, char *src)
+float	ft_dist(float ax, float ay, float bx, float by)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (dest[j] != '\0')
-	{
-		j++;
-	}
-	while (src[i] != '\0')
-	{
-		dest[j] = src[i];
-		i++;
-		j++;
-	}
-	dest[j] = '\0';
-	return (dest);
+	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }

@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:04:27 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 18:31:50 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 14:13:07 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@
 
 # define MAX_DIST 1000000000
 # define MAX_RAYS 400
-# define FOV 45
-# define WALL_HEIGHT 700
+# define FOV 60
+# define WALL_H 700
 
 # define PREC_DN 0.00001
 # define PREC_UP 1
 
 # define STP_INC 0.25
 # define ANG_INC 0.07
+
+# define DIFF_MV 0.25
+# define DIFF_RT 0.07
 
 #endif

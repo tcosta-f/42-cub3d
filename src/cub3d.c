@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/13 17:43:49 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/19 17:14:09 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ int	main(int argc, char **argv)
 		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
 		if(game->cfg->valid)
-			ft_run_game(&game);
+		{
+			ft_init_game(game);
+			ft_run_game(game);
+		}
 		ft_free_game(&game);
 	}
 	else
