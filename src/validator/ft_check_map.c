@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/19 14:47:14 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/24 21:27:32 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,25 @@ static void	ft_set_player_dir(t_game *game, char c)
 {
 	game->p->dir = c;
 	if (game->p->dir == 'N')
-		game->p->ang = PI / 2;
+	{
+		game->p->dir_x = 0;
+		game->p->dir_y = -1;
+	}
 	if (game->p->dir == 'E')
-		game->p->ang = PI;
+	{
+		game->p->dir_x = 1;
+		game->p->dir_y = 0;
+	}
 	if (game->p->dir == 'S')
-		game->p->ang = 3 * PI / 2;
+	{
+		game->p->dir_x = 0;
+		game->p->dir_y = 1;
+	}
 	if (game->p->dir == 'W')
-		game->p->ang = 0;
-	game->p->dx = cos(game->p->ang);
-	game->p->dy = sin(game->p->ang);
+	{
+		game->p->dir_x = -1;
+		game->p->dir_y = 0;
+	}
 }
 
 /**
@@ -77,8 +87,8 @@ static bool	ft_check_player(t_game *game)
 			{
 				if (game->map->p_x == -1 && game->map->p_y == -1)
 				{
-					game->map->p_x = x;
-					game->map->p_y = y;
+					game->map->p_x = (double) x;
+					game->map->p_y = (double) y;
 					ft_set_player_dir(game, game->map->data[y][x]);
 				}
 				else

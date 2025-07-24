@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/19 17:27:28 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/24 22:30:33 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <limits.h>
 
 /**
  * @brief 
@@ -43,12 +44,29 @@ typedef struct s_map
 {
 	char	**data;
 	char	*raw_data;
-	int		p_x;
-	int		p_y;
+	double	p_x;
+	double	p_y;
 	char	player_dir;
 	int		w;
 	int		h;
 }	t_map;
+
+/**
+ * @brief	Image reference as in Minilibx documentation 
+ * @param img	 		Img data from MLX
+ * @param add	 		Img Pointer Address
+ * @param bpp	 		Bits Per Pixel
+ * @param line_len		Line length of the image
+ * @param endian		A pointer to where the endian is written;
+ */
+typedef struct s_img
+{
+	void	*img;
+	char	*add;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
 
 /**
  * @brief Color Structure
@@ -84,10 +102,10 @@ typedef struct s_cfg
 	char	*so_fil;
 	char	*we_fil;
 	char	*ea_fil;
-	void	*no_img;
-	void	*so_img;
-	void	*we_img;
-	void	*ea_img;
+	t_img	*no_img;
+	t_img	*so_img;
+	t_img	*we_img;
+	t_img	*ea_img;
 	int		h_img;
 	int		w_img;
 	t_color	*f;
@@ -99,23 +117,6 @@ typedef struct s_cfg
 	bool	started_map;
 	bool	ended_map;
 }	t_cfg;
-
-/**
- * @brief	Image reference as in Minilibx documentation 
- * @param img	 		Img data from MLX
- * @param add	 		Img Pointer Address
- * @param bpp	 		Bits Per Pixel
- * @param line_len		Line length of the image
- * @param endian		A pointer to where the endian is written;
- */
-typedef struct s_img
-{
-	void	*img;
-	char	*add;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_img;
 
 /**
  * @brief Check if key is pressed or not
@@ -137,64 +138,38 @@ typedef struct s_keys
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
-	float	col_x;
-	float	col_y;
-	float	dx;
-	float	dy;
-	float	ang;
-	int		dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double		plane_x;
+	double		plane_y;
+	char		dir;
 }	t_player;
 
-typedef struct s_coord
-{
-	int	x;
-	int	y;
-}	t_coord;
-
-/**
- * @brief Raycast Structure
- * @param dof		Depth of Field
- * @param max_dof	Maximum Depth of Field
- * @param hrzt_dist	Horizontal Distance
- * @param hrzt_x	Horizontal X
- * @param hrzt_y	Horizontal Y
- * @param hrzt_tan	Horizontal Tangent
- * @param vert_dist	Vertical Distance
- * @param vert_x	Vertical X
- * @param vert_y	Vertical Y
- * @param vert_tan	Vertical Tangent
- * 
- */
 typedef struct s_raycast
 {
-	int		dof;
-	int		max_dof;
-	void	*texture;
-	int		texture_x;
-	int		texture_y;
-	int		color;
-	int		ray;
-	float	ray_x;
-	float	ray_y;
-	float	ray_ang;
-	float	ray_x_offset;
-	float	ray_y_offset;
-	int		ray_hrzt_dist;
-	float	dist;
-	float	hrzt_dist;
-	float	hrzt_x;
-	float	hrzt_y;
-	float	hrzt_tan;
-	float	vert_dist;
-	float	vert_x;
-	float	vert_y;
-	float	vert_tan;
-	int		vert_line;
-	float	cast_ang;
-	int		line_off;
-	int		line_y;
+	int			map_x;
+	int			map_y;
+	double		cam_x;
+	double		dir_x;
+	double		dir_y;
+	int			step_x;
+	int			step_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			wall_side;
+	double		wall_x;
+	double		wall_y;
+	double		perpwalldist;
+	int			start;
+	int			end;
+	int			tex_x;
+	int			tex_y;
+	double		tex_pos;
+	double		step;
 }	t_raycast;
 
 typedef struct s_game
@@ -206,6 +181,7 @@ typedef struct s_game
 	t_img		*img;
 	t_keys		*k;
 	t_player	*p;
+	t_raycast	*rc;
 }	t_game;
 
 /* Setup */
