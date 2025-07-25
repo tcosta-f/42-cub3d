@@ -12,17 +12,13 @@ void	img_pix_put(t_game *g, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
-// unsigned int	get_color(int x, int y, t_img* tex)
-// {
-// 	return (*(unsigned int *)(tex->add + (y * tex->line_len + x * (tex->bpp / 8))));
-// }
-
-static int	get_color(t_img *texture, int x, int y, int tile_size)
+static int	get_color(void *texture, int x, int y, int tile_size)
 {
 	int		color;
 	void	*temp;
+	t_img	img;
 
-	temp = texture->add;
+	temp = mlx_get_data_addr(texture, &img.bpp, &img.line_len, &img.endian);;
 	temp = temp + (x + y * tile_size) * 4;
 	color = *(unsigned char *)(temp + 2) << 16;
 	color |= *(unsigned char *)(temp + 1) << 8;
@@ -43,8 +39,7 @@ void	define_texture(t_game *g, int start, int line_height)
 	if (g->rc->wall_side == 1 && g->rc->dir_y < 0)
 		g->rc->tex_x = g->cfg->h_img - g->rc->tex_x - 1;
 	g->rc->step = 1.0 * g->cfg->h_img / line_height;
-	g->rc->tex_pos = (start - WIN_H / 2
-			+ line_height / 2) * g->rc->step;
+	g->rc->tex_pos = (start - WIN_H / 2 + line_height / 2) * g->rc->step;
 }
 
 void	define_column(t_game *g, int *line_height, int *start, int *end)
