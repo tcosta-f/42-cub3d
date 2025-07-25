@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/24 21:27:32 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 16:41:35 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,22 @@ static bool	ft_check_chars(t_game *game)
 static void	ft_set_player_dir(t_game *game, char c)
 {
 	game->p->dir = c;
-	if (game->p->dir == 'N')
+	if (c == 'N')
 	{
 		game->p->dir_x = 0;
 		game->p->dir_y = -1;
 	}
-	if (game->p->dir == 'E')
+	if (c == 'E')
 	{
 		game->p->dir_x = 1;
 		game->p->dir_y = 0;
 	}
-	if (game->p->dir == 'S')
+	if (c == 'S')
 	{
 		game->p->dir_x = 0;
 		game->p->dir_y = 1;
 	}
-	if (game->p->dir == 'W')
+	if (c == 'W')
 	{
 		game->p->dir_x = -1;
 		game->p->dir_y = 0;

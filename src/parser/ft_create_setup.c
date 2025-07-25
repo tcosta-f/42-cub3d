@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:38:05 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 11:18:50 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 16:07:03 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ static void	ft_check_config(t_game *game, void *mlx)
 
 	if (game->cfg->dup_val == true)
 		ft_error_free_all_exit(game, ERR_DUPL_DFNTION, true, 3);	
-	ft_load_texture(game->cfg->no_fil, &(game->cfg->no_img), &game, mlx);
-	ft_load_texture(game->cfg->so_fil, &(game->cfg->so_img), &game, mlx);
-	ft_load_texture(game->cfg->we_fil, &(game->cfg->we_img), &game, mlx);
-	ft_load_texture(game->cfg->ea_fil, &(game->cfg->ea_img), &game, mlx);
+	ft_load_texture(game->cfg->no_fil, &(game->cfg->no_img), game, mlx);
+	ft_load_texture(game->cfg->so_fil, &(game->cfg->so_img), game, mlx);
+	ft_load_texture(game->cfg->we_fil, &(game->cfg->we_img), game, mlx);
+	ft_load_texture(game->cfg->ea_fil, &(game->cfg->ea_img), game, mlx);
 }
 
 /**
