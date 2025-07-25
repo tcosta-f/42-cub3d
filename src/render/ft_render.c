@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:44:22 by alm               #+#    #+#             */
-/*   Updated: 2025/07/25 16:13:43 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 17:04:25 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ static void	ft_raycast(t_game *g)
 
 int	ft_render(t_game *game)
 {
-	ft_handle_keys(game);
+	// ft_handle_keys(game);
 	ft_draw_bg(game);
 	ft_raycast(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);

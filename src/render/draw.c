@@ -24,12 +24,12 @@ void	define_texture(t_game *g, int start, int line_height)
 	else
 		g->rc->wall_x = g->p->pos_x + g->rc->perpwalldist * g->rc->dir_x;
 	g->rc->wall_x -= floor(g->rc->wall_x);
-	g->rc->tex_x = g->rc->wall_x * 128;
+	g->rc->tex_x = g->rc->wall_x * g->cfg->h_img;
 	if (g->rc->wall_side == 0 && g->rc->dir_x > 0)
-		g->rc->tex_x = 128 - g->rc->tex_x - 1;
+		g->rc->tex_x = g->cfg->h_img - g->rc->tex_x - 1;
 	if (g->rc->wall_side == 1 && g->rc->dir_y < 0)
-		g->rc->tex_x = 128 - g->rc->tex_x - 1;
-	g->rc->step = 1.0 * 128 / line_height;
+		g->rc->tex_x = g->cfg->h_img - g->rc->tex_x - 1;
+	g->rc->step = 1.0 * g->cfg->h_img / line_height;
 	g->rc->tex_pos = (start - WIN_H / 2
 			+ line_height / 2) * g->rc->step;
 }
@@ -61,7 +61,7 @@ void	draw_column(t_game *g, int x)
 	define_texture(g, g->rc->start, line_height);
 	while (g->rc->start < g->rc->end)
 	{
-		g->rc->tex_y = (int)g->rc->tex_pos & (128 - 1);
+		g->rc->tex_y = (int)g->rc->tex_pos & (g->cfg->h_img - 1);
 		g->rc->tex_pos += g->rc->step;
 		if (g->rc->wall_side == 1 && g->rc->dir_y < 0)
 			draw(g, x, g->cfg->so_img);
