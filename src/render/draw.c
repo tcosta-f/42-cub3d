@@ -12,10 +12,23 @@ void	img_pix_put(t_game *g, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
-int	get_color(int x, int y, t_img* tex)
+// unsigned int	get_color(int x, int y, t_img* tex)
+// {
+// 	return (*(unsigned int *)(tex->add + (y * tex->line_len + x * (tex->bpp / 8))));
+// }
+
+static int	get_color(t_img *texture, int x, int y, int tile_size)
 {
-	return (*(int *)(tex + (y * tex->line_len + x * (tex->bpp / 8))));
-}
+	int		color;
+	void	*temp;
+
+	temp = texture->add;
+	temp = temp + (x + y * tile_size) * 4;
+	color = *(unsigned char *)(temp + 2) << 16;
+	color |= *(unsigned char *)(temp + 1) << 8;
+	color |= *(unsigned char *)temp;
+	return (color);
+} 
 
 void	define_texture(t_game *g, int start, int line_height)
 {
@@ -49,7 +62,7 @@ void	draw(t_game *g, int x, t_img *texture)
 {
 	int	color;
 
-	color = get_color(g->rc->tex_x, g->rc->tex_y, texture);
+	color = get_color(texture, g->rc->tex_x, g->rc->tex_y, g->cfg->h_img);
 	img_pix_put(g, x, g->rc->start, color);
 }
 
