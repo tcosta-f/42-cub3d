@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/25 16:41:35 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 17:12:27 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static bool	ft_check_chars(t_game *game)
 	return (true);
 }
 
-static void	ft_set_player_dir(t_game *game, char c)
+static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 {
+	game->p->pos_x = x;
+	game->p->pos_y = y;
 	game->p->dir = c;
 	if (c == 'N')
 	{
@@ -89,7 +91,7 @@ static bool	ft_check_player(t_game *game)
 				{
 					game->map->p_x = (double) x;
 					game->map->p_y = (double) y;
-					ft_set_player_dir(game, game->map->data[y][x]);
+					ft_set_player_dir(game, game->map->data[y][x], x, y);
 				}
 				else
 					ft_error_free_all_exit(game, ERR_STARTING_POS, true, 1);
