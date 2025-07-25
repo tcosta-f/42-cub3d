@@ -18,7 +18,7 @@ static int	get_color(void *texture, int x, int y, int tile_size)
 	void	*temp;
 	t_img	img;
 
-	temp = mlx_get_data_addr(texture, &img.bpp, &img.line_len, &img.endian);;
+	temp = mlx_get_data_addr(texture, &img.bpp, &img.line_len, &img.endian);
 	temp = temp + (x + y * tile_size) * 4;
 	color = *(unsigned char *)(temp + 2) << 16;
 	color |= *(unsigned char *)(temp + 1) << 8;
