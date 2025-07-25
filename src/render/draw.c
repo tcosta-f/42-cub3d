@@ -12,7 +12,7 @@ void	img_pix_put(t_game *g, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
-int	get_color(t_game *g, int x, int y, t_img* tex)
+int	get_color(int x, int y, t_img* tex)
 {
 	return (*(int *)(tex + (y * tex->line_len + x * (tex->bpp / 8))));
 }
@@ -45,11 +45,11 @@ void	define_column(t_game *g, int *line_height, int *start, int *end)
 		*end = WIN_H - 1;
 }
 
-void	draw(t_game *g, int x, int texture)
+void	draw(t_game *g, int x, t_img *texture)
 {
 	int	color;
 
-	color = get_color(g, g->rc->tex_x, g->rc->tex_y, texture);
+	color = get_color(g->rc->tex_x, g->rc->tex_y, texture);
 	img_pix_put(g, x, g->rc->start, color);
 }
 

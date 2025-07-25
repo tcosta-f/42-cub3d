@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:12:06 by alm               #+#    #+#             */
-/*   Updated: 2025/07/19 14:49:47 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 12:05:32 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ static void	ft_print_color(t_color *color, char *name)
 void	ft_print_player(t_player *p)
 {
 	printf("\n######## PLAYER ########\n");
-	printf("x, y > %f, %f\n", p->x, p->y);
-	printf("col > %f, %f\n", p->col_x, p->col_y);
-	printf("dx > %f, %f\n", p->dx, p->dy);
-	printf("ang | dir > %f, %c\n", p->ang, p->dir);
+	printf("pos > %f, %f\n", p->pos_x, p->pos_y);
+	printf("dir > %f, %f | %d\n", p->dir_x, p->dir_y, p->dir);
+	printf("plane > %f, %f\n", p->plane_x, p->plane_y);
 }
 
 /**

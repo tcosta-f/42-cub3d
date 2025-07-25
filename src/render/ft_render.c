@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:44:22 by alm               #+#    #+#             */
-/*   Updated: 2025/07/24 22:28:42 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 12:27:31 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	digital_differential_analyser(t_game *g)
 		}
 		else
 		{
-			g->rc->side_dist_y += mg->rcp->delta_dist_y;
+			g->rc->side_dist_y += g->rc->delta_dist_y;
 			g->rc->map_y += g->rc->step_y;
 			g->rc->wall_side = 1;
 		}
@@ -114,15 +114,15 @@ static void	ft_raycast(t_game *g)
 	x = 0;
 	while (x < WIN_W)
 	{
-		init_raycasting(g->rc, x);
+		init_raycasting(g, x);
 		get_delta_dist(g);
-		get_step(g->map);
-		digital_differential_analyser(g->map);
+		get_step(g);
+		digital_differential_analyser(g);
 		if (g->rc->wall_side == 0)
 			g->rc->perpwalldist = ((g->rc->side_dist_x - g->rc->delta_dist_x));
 		else
 			g->rc->perpwalldist = ((g->rc->side_dist_y - g->rc->delta_dist_y));
-		draw_column(map, x);
+		draw_column(g, x);
 		x++;
 	}
 }

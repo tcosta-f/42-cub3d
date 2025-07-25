@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/19 17:27:28 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 12:23:21 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,37 +35,40 @@ int		ft_key_press(int key_code, t_game *game)
 	return (0);
 }
 
-static void	ft_player_move(t_game *game, double new_x, double new_y)
+static void	ft_player_move(t_game *g, double next_x, double next_y, char sign)
 {
-	int	x_forward;
-	int	y_forward;
+	int	old_x;
+	int	old_y;
 
-	x_forward = (int)(game->p->x + (new_x * 8) * DIFF_MV);
-	y_forward = (int)(game->p->y + (new_y * 8) * DIFF_MV);
-	if (game->map->data[(int)game->p->y][x_forward] != '1')
+	old_x = (int)g->p->pos_x;
+	old_y = (int)g->p->pos_y;
+	if (sign == '+')
 	{
-		game->p->x += new_x * DIFF_MV;
-		game->p->col_x = x_forward * (WIN_W / game->map->w);
+		if (g->map->data[old_y][(int)(old_x + next_x)] != '1')
+			g->p->pos_x += next_x;
+		if (g->map->data[(int)(old_y + next_y)][old_x] != '1')
+			g->p->pos_y += next_y;
 	}
-	if (game->map->data[y_forward][(int)game->p->x] != '1')
+	else if (sign == '-')
 	{
-		game->p->y += new_y * DIFF_MV;
-		game->p->col_y = y_forward * (WIN_H / game->map->h);
+		if (g->map->data[old_y][(int)(old_x - next_x)] != '1')
+			g->p->pos_x -= next_x;
+		if (g->map->data[(int)(old_y - next_y)][old_x] != '1')
+			g->p->pos_y -= next_y;
 	}
 }
 
-static void	ft_player_turn(t_game *game, char dir)
+static void	ft_player_turn(t_game *g, double rot_spd)
 {
-	if (dir == 'L')
-		game->p->ang -= DIFF_RT + (game->p->ang < 0) * (2 * PI);
-	else
-		game->p->ang += DIFF_RT - (game->p->ang > 2) * (2 * PI);
-	if (game->p->ang < 0)
-		game->p->ang += 2 * PI;
-	if (game->p->ang > 2 * PI)
-		game->p->ang -= 2 * PI;
-	game->p->dx = cos (game->p->ang);
-	game->p->dy = sin (game->p->ang);
+	double	tmp_dir_x;
+	double	tmp_plane_x;
+
+	tmp_dir_x = g->p->dir_x;
+	tmp_plane_x = g->p->plane_x;
+	g->p->dir_x = g->p->dir_x * cos(rot_spd) - g->p->dir_y * sin(rot_spd);
+	g->p->dir_y = tmp_dir_x * sin(rot_spd) + g->p->dir_y * cos(rot_spd);
+	g->p->plane_x = g->p->plane_x * cos(rot_spd) - g->p->plane_y * sin(rot_spd);
+	g->p->plane_y = tmp_plane_x * sin(rot_spd) + g->p->plane_y * cos(rot_spd);
 }
 
 int		ft_key_release(int key_code, t_game *game)
@@ -91,19 +94,19 @@ int		ft_key_release(int key_code, t_game *game)
 	return (0);
 }
 
-void	ft_handle_keys(t_game *game) {
-	if (game->k->esc == true)
-		ft_handle_exit(game);
-	if (game->k->up || game->k->w)
-		ft_player_move(game, game->p->dx * DIFF_MV, game->p->dy * DIFF_MV);
-	if (game->k->down || game->k->s)
-		ft_player_move(game, game->p->dx * DIFF_MV, game->p->dy * DIFF_MV);
-	if (game->k->a)
-		ft_player_move(game, game->p->dy * DIFF_MV, game->p->dx * DIFF_MV);
-	if (game->k->d)
-		ft_player_move(game, game->p->dy * DIFF_MV, game->p->dx * DIFF_MV);
-	if (game->k->left)
-		ft_player_turn(game, 'L');
-	if (game->k->right)
-		ft_player_turn(game, 'R');
+void	ft_handle_keys(t_game *g) {
+	if (g->k->esc == true)
+		ft_handle_exit(g);
+	if (g->k->up || g->k->w)
+		ft_player_move(g, g->p->dir_x * L_SPD, g->p->dir_y * L_SPD, '+');
+	if (g->k->down || g->k->s)
+		ft_player_move(g, g->p->dir_x * L_SPD, g->p->dir_y * L_SPD, '-');
+	if (g->k->a)
+		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '-');
+	if (g->k->d)
+		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '+');
+	if (g->k->left)
+		ft_player_turn(g, -A_SPD);
+	if (g->k->right)
+		ft_player_turn(g, A_SPD);
 }
