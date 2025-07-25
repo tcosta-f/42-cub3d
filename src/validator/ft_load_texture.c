@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/25 16:07:42 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 17:44:54 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @return false 	Can't read it.
  */
 
-void	ft_load_texture(char *file, t_img **img, t_game *g, void *mlx)
+void	ft_load_texture(char *file, void **img, t_game *g, void *mlx)
 {
 	int	temp_w;
 	int	temp_h;
