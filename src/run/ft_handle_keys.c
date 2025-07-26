@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/26 11:41:11 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/26 11:47:34 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,18 @@ int		ft_key_press(int key_code, t_game *game)
 
 static void	ft_player_move(t_game *g, double next_x, double next_y, char sign)
 {
-	int	old_x;
-	int	old_y;
-
-	old_x = (int)g->p->pos_x;
-	old_y = (int)g->p->pos_y;
 	if (sign == '+')
 	{
-		if (g->map->data[old_y][(int)(floor(old_x + next_x))] != '1')
+		if (g->map->data[(int)g->p->pos_y][(int)(g->p->pos_x + next_x)] != '1')
 			g->p->pos_x += next_x;
-		if (g->map->data[(int)(floor(old_y + next_y))][old_x] != '1')
+		if (g->map->data[(int)(g->p->pos_y + next_y)][(int)g->p->pos_x] != '1')
 			g->p->pos_y += next_y;
 	}
 	else if (sign == '-')
 	{
-		if (g->map->data[old_y][(int)(old_x - next_x)] != '1')
+		if (g->map->data[(int)g->p->pos_y][(int)(g->p->pos_x - next_x)] != '1')
 			g->p->pos_x -= next_x;
-		if (g->map->data[(int)(old_y - next_y)][old_x] != '1')
+		if (g->map->data[(int)(g->p->pos_y - next_y)][(int)(g->p->pos_x)] != '1')
 			g->p->pos_y -= next_y;
 	}
 }
