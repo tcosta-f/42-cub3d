@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/25 18:27:38 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/26 10:55:16 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 	{
 		game->p->dir_x = 0;
 		game->p->dir_y = -1;
-		game->p->plane_x = 0.66;
+		game->p->plane_x = PLANE;
 		game->p->plane_y = 0;
 	}
 	if (c == 'E')
@@ -56,13 +56,13 @@ static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 		game->p->dir_x = 1;
 		game->p->dir_y = 0;
 		game->p->plane_x = 0;
-		game->p->plane_y = -0.66;
+		game->p->plane_y = -PLANE;
 	}
 	if (c == 'S')
 	{
 		game->p->dir_x = 0;
 		game->p->dir_y = 1;
-		game->p->plane_x = -0.66;
+		game->p->plane_x = -PLANE;
 		game->p->plane_y = 0;
 	}
 	if (c == 'W')
@@ -70,7 +70,7 @@ static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 		game->p->dir_x = -1;
 		game->p->dir_y = 0;
 		game->p->plane_x = 0;
-		game->p->plane_y = 0.66;
+		game->p->plane_y = PLANE;
 	}
 }
 
