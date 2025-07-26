@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/25 12:23:21 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/26 11:41:11 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static void	ft_player_move(t_game *g, double next_x, double next_y, char sign)
 	old_y = (int)g->p->pos_y;
 	if (sign == '+')
 	{
-		if (g->map->data[old_y][(int)(old_x + next_x)] != '1')
+		if (g->map->data[old_y][(int)(floor(old_x + next_x))] != '1')
 			g->p->pos_x += next_x;
-		if (g->map->data[(int)(old_y + next_y)][old_x] != '1')
+		if (g->map->data[(int)(floor(old_y + next_y))][old_x] != '1')
 			g->p->pos_y += next_y;
 	}
 	else if (sign == '-')
@@ -105,8 +105,8 @@ void	ft_handle_keys(t_game *g) {
 		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '-');
 	if (g->k->d)
 		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '+');
-	if (g->k->left)
+	if ((g->k->left && (g->p->dir == 'N' || g->p->dir == 'S')) || (g->k->right && (g->p->dir == 'E' || g->p->dir == 'W')))
 		ft_player_turn(g, -A_SPD);
-	if (g->k->right)
+	if ((g->k->left && (g->p->dir == 'E' || g->p->dir == 'W')) || (g->k->right && (g->p->dir == 'N' || g->p->dir == 'S')))
 		ft_player_turn(g, A_SPD);
 }

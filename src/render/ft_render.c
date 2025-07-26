@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:44:22 by alm               #+#    #+#             */
-/*   Updated: 2025/07/26 10:57:36 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/26 11:42:39 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,6 @@ void	digital_differential_analyser(t_game *g)
 			g->rc->map_y += g->rc->step_y;
 			g->rc->wall_side = 1;
 		}
-		// if (g->rc->map_y >= g->map->h)
-		// 	g->rc->map_y = g->map->h - 1;
-		// if (g->rc->map_x >= g->map->w)
-		// 	g->rc->map_x = g->map->w - 1;
 		if (g->map->data[g->rc->map_y][g->rc->map_x] == '1')
 			wall = 1;
 	}
