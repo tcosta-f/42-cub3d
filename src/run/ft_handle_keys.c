@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/26 11:47:34 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 09:02:38 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_handle_keys(t_game *g) {
 	if (g->k->d)
 		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '+');
 	if ((g->k->left && (g->p->dir == 'N' || g->p->dir == 'S')) || (g->k->right && (g->p->dir == 'E' || g->p->dir == 'W')))
-		ft_player_turn(g, -A_SPD);
-	if ((g->k->left && (g->p->dir == 'E' || g->p->dir == 'W')) || (g->k->right && (g->p->dir == 'N' || g->p->dir == 'S')))
 		ft_player_turn(g, A_SPD);
+	if ((g->k->left && (g->p->dir == 'E' || g->p->dir == 'W')) || (g->k->right && (g->p->dir == 'N' || g->p->dir == 'S')))
+		ft_player_turn(g, -A_SPD);
 }
