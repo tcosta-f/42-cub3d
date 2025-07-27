@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/19 14:47:14 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/26 10:55:16 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,39 @@ static bool	ft_check_chars(t_game *game)
 	return (true);
 }
 
-static void	ft_set_player_dir(t_game *game, char c)
+static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 {
+	game->p->pos_x = x;
+	game->p->pos_y = y;
 	game->p->dir = c;
-	if (game->p->dir == 'N')
-		game->p->ang = PI / 2;
-	if (game->p->dir == 'E')
-		game->p->ang = PI;
-	if (game->p->dir == 'S')
-		game->p->ang = 3 * PI / 2;
-	if (game->p->dir == 'W')
-		game->p->ang = 0;
-	game->p->dx = cos(game->p->ang);
-	game->p->dy = sin(game->p->ang);
+	if (c == 'N')
+	{
+		game->p->dir_x = 0;
+		game->p->dir_y = -1;
+		game->p->plane_x = PLANE;
+		game->p->plane_y = 0;
+	}
+	if (c == 'E')
+	{
+		game->p->dir_x = 1;
+		game->p->dir_y = 0;
+		game->p->plane_x = 0;
+		game->p->plane_y = -PLANE;
+	}
+	if (c == 'S')
+	{
+		game->p->dir_x = 0;
+		game->p->dir_y = 1;
+		game->p->plane_x = -PLANE;
+		game->p->plane_y = 0;
+	}
+	if (c == 'W')
+	{
+		game->p->dir_x = -1;
+		game->p->dir_y = 0;
+		game->p->plane_x = 0;
+		game->p->plane_y = PLANE;
+	}
 }
 
 /**
@@ -77,9 +97,9 @@ static bool	ft_check_player(t_game *game)
 			{
 				if (game->map->p_x == -1 && game->map->p_y == -1)
 				{
-					game->map->p_x = x;
-					game->map->p_y = y;
-					ft_set_player_dir(game, game->map->data[y][x]);
+					game->map->p_x = (double) x;
+					game->map->p_y = (double) y;
+					ft_set_player_dir(game, game->map->data[y][x], x, y);
 				}
 				else
 					ft_error_free_all_exit(game, ERR_STARTING_POS, true, 1);

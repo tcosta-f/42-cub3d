@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/19 17:14:09 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/25 16:15:04 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ static void	ft_init_game_struct(t_game **game)
 	t_cfg		*cfg;
 	t_color		*f;
 	t_color		*c;
+	t_raycast	*rc;
 
 	cfg = (t_cfg *) ft_calloc(1, sizeof(t_cfg));
+	rc = (t_raycast *) ft_calloc(1, sizeof(t_raycast));
+	(*game)->rc = rc;
 	ft_init_cfg(&cfg);
 	map = (t_map *) ft_calloc(1, sizeof(t_map));
 	ft_init_map(&map);

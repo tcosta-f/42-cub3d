@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:04:27 by alm               #+#    #+#             */
-/*   Updated: 2025/07/19 14:13:07 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/26 10:55:56 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@
 # define PREC_DN 0.00001
 # define PREC_UP 1
 
-# define STP_INC 0.25
-# define ANG_INC 0.07
-
-# define DIFF_MV 0.25
-# define DIFF_RT 0.07
+# define L_SPD 0.09 // Linear Speed
+# define A_SPD 0.09 // Angular Speed
+# define PLANE 0.66 // Plane Distance
 
 #endif
