@@ -1,0 +1,11 @@
+NO    ./textures/42_NO.xpm
+WE     ./textures/42_WE.xpm
+SO      ./textures/42_SO.xpm
+EA      ./textures/42_EA.xpm
+
+C 50,50,100
+F 100,50,20
+
+ 1
+1N1
+ 1
