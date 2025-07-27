@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/27 09:07:05 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 10:22:02 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,10 +222,7 @@ int		ft_key_release(int key_code, t_game *game);
 
 /* Render */
 int			ft_render(t_game *game);
-void		ft_rc_reset(t_game *game, t_raycast *rc);
-void		ft_pick_wall(t_game *game, t_raycast *rc);
-void		ft_pick_texture(t_game *game, t_raycast *rc);
-void		ft_draw_image(t_game *game, t_raycast *rc);
+void		ft_raycast(t_game *g);
 void		draw_column(t_game *g, int x);
 
 #endif
