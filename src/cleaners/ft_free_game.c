@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 11:18:29 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 13:48:54 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_free_game(t_game **game)
 		}
 		ft_safe_free((*game)->k);
 		ft_safe_free((*game)->p);
+		ft_safe_free((*game)->rc);
 		ft_safe_free(*game);
 		*game = NULL;
 	}

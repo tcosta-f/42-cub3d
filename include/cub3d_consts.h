@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:04:27 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 10:28:43 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 13:44:58 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@
 # define L_SPD 0.05 // Linear Speed
 # define A_SPD 0.05 // Angular Speed
 # define PLANE -0.66 // Plane Distance
+# define PRECS 0.00001 // Precision Const
 
 #endif

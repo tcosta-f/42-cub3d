@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 10:52:32 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 13:45:41 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static void	ft_player_move(t_game *g, double next_x, double next_y, char sign)
 	if (sign == '+')
 	{
 		if (g->map->data[(int)g->p->pos_y][(int)(g->p->pos_x + next_x)] != '1')
-			g->p->pos_x += next_x;
+			g->p->pos_x += next_x - PRECS;
 		if (g->map->data[(int)(g->p->pos_y + next_y)][(int)g->p->pos_x] != '1')
-			g->p->pos_y += next_y;
+			g->p->pos_y += next_y - PRECS;
 	}
 	else if (sign == '-')
 	{
 		if (g->map->data[(int)g->p->pos_y][(int)(g->p->pos_x - next_x)] != '1')
-			g->p->pos_x -= next_x;
+			g->p->pos_x -= next_x + PRECS;
 		if (g->map->data[(int)(g->p->pos_y - next_y)][(int)(g->p->pos_x)] !=
 			'1')
-			g->p->pos_y -= next_y;
+			g->p->pos_y -= next_y + PRECS;
 	}
 }
 
