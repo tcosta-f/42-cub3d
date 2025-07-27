@@ -1,0 +1,15 @@
+NO    ./textures/doom_01.xpm
+WE     ./textures/doom_01.xpm
+SO      ./textures/doom_01.xpm
+EA      ./textures/doom_face.xpm
+
+C 50,50,100
+F 100,50,20
+
+1111111
+1000011
+1000001
+1001001
+1000001
+100N001
+1111111
