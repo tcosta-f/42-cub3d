@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:41:39 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/27 09:11:20 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:18:53 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char **argv)
 			return (ft_throw_error(ERR_MEMORY_ALLOC, EX_GENERICERR));
 		ft_init_game_struct(&game);
 		ft_create_setup(argv[1], game);
-		if(game->cfg->valid)
+		if (game->cfg->valid)
 		{
 			ft_init_game(game);
 			ft_run_game(game);

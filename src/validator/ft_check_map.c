@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 09:29:58 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:23:40 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,34 @@ static bool	ft_check_chars(t_game *game)
 	return (true);
 }
 
+static void	ft_set_plane_dir(t_game *game, char c)
+{
+	if (c == 'N')
+	{
+		game->p->plane_x = PLANE;
+		game->p->plane_y = 0;
+	}
+	if (c == 'E')
+	{
+		game->p->plane_x = 0;
+		game->p->plane_y = -PLANE;
+	}
+	if (c == 'S')
+	{
+		game->p->plane_x = -PLANE;
+		game->p->plane_y = 0;
+	}
+	if (c == 'W')
+	{
+		game->p->plane_x = 0;
+		game->p->plane_y = PLANE;
+	}
+}
+
 static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 {
+	game->map->p_x = (double) x;
+	game->map->p_y = (double) y;
 	game->p->pos_x = x;
 	game->p->pos_y = y;
 	game->p->dir = c;
@@ -48,29 +74,21 @@ static void	ft_set_player_dir(t_game *game, char c, int x, int y)
 	{
 		game->p->dir_x = 0;
 		game->p->dir_y = -1;
-		game->p->plane_x = PLANE;
-		game->p->plane_y = 0;
 	}
 	if (c == 'E')
 	{
 		game->p->dir_x = 1;
 		game->p->dir_y = 0;
-		game->p->plane_x = 0;
-		game->p->plane_y = -PLANE;
 	}
 	if (c == 'S')
 	{
 		game->p->dir_x = 0;
 		game->p->dir_y = 1;
-		game->p->plane_x = -PLANE;
-		game->p->plane_y = 0;
 	}
 	if (c == 'W')
 	{
 		game->p->dir_x = -1;
 		game->p->dir_y = 0;
-		game->p->plane_x = 0;
-		game->p->plane_y = PLANE;
 	}
 }
 
@@ -97,9 +115,8 @@ static bool	ft_check_player(t_game *game)
 			{
 				if (game->map->p_x == -1 && game->map->p_y == -1)
 				{
-					game->map->p_x = (double) x;
-					game->map->p_y = (double) y;
 					ft_set_player_dir(game, game->map->data[y][x], x, y);
+					ft_set_plane_dir(game, game->map->data[y][x]);
 				}
 				else
 					ft_error_free_all_exit(game, ERR_STARTING_POS, true, 1);

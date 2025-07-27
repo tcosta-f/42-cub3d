@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 11:45:31 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 09:32:33 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 10:52:32 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	ft_player_move(t_game *g, double next_x, double next_y, char sign)
 	{
 		if (g->map->data[(int)g->p->pos_y][(int)(g->p->pos_x - next_x)] != '1')
 			g->p->pos_x -= next_x;
-		if (g->map->data[(int)(g->p->pos_y - next_y)][(int)(g->p->pos_x)] != '1')
+		if (g->map->data[(int)(g->p->pos_y - next_y)][(int)(g->p->pos_x)] !=
+			'1')
 			g->p->pos_y -= next_y;
 	}
 }
@@ -43,7 +44,8 @@ static void	ft_player_turn(t_game *g, double rot_spd)
 	g->p->plane_y = tmp_plane_x * sin(rot_spd) + g->p->plane_y * cos(rot_spd);
 }
 
-void	ft_handle_keys(t_game *g) {
+void	ft_handle_keys(t_game *g)
+{
 	if (g->k->esc == true)
 		ft_handle_exit(g);
 	if (g->k->up || g->k->w)
@@ -54,8 +56,10 @@ void	ft_handle_keys(t_game *g) {
 		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '-');
 	if (g->k->d)
 		ft_player_move(g, g->p->plane_x * L_SPD, g->p->plane_y * L_SPD, '+');
-	if ((g->k->left && (g->p->dir == 'N' || g->p->dir == 'S')) || (g->k->right && (g->p->dir == 'E' || g->p->dir == 'W')))
+	if ((g->k->left && (g->p->dir == 'N' || g->p->dir == 'S'))
+		|| (g->k->right && (g->p->dir == 'E' || g->p->dir == 'W')))
 		ft_player_turn(g, A_SPD);
-	if ((g->k->left && (g->p->dir == 'E' || g->p->dir == 'W')) || (g->k->right && (g->p->dir == 'N' || g->p->dir == 'S')))
+	if ((g->k->left && (g->p->dir == 'E' || g->p->dir == 'W'))
+		|| (g->k->right && (g->p->dir == 'N' || g->p->dir == 'S')))
 		ft_player_turn(g, -A_SPD);
 }

@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:44:22 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 10:21:20 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:03:49 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param game 
  * @return * void 
  */
-static void ft_draw_bg(t_game *game)
+static void	ft_draw_bg(t_game *game)
 {
 	int	x;
 	int	y;

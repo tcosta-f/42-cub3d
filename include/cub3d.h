@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/27 10:22:02 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:01:52 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
-# include "./constants.h"
+# include "./cub3d_consts.h"
 # include "colors.h"
 # include "errors.h"
 # include <math.h>
@@ -142,9 +142,9 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double		plane_x;
-	double		plane_y;
-	char		dir;
+	double	plane_x;
+	double	plane_y;
+	char	dir;
 }	t_player;
 
 typedef struct s_raycast
@@ -221,8 +221,8 @@ int		ft_key_press(int key_code, t_game *g);
 int		ft_key_release(int key_code, t_game *game);
 
 /* Render */
-int			ft_render(t_game *game);
-void		ft_raycast(t_game *g);
-void		draw_column(t_game *g, int x);
+int		ft_render(t_game *game);
+void	ft_raycast(t_game *g);
+void	ft_draw_column(t_game *g, int x);
 
 #endif

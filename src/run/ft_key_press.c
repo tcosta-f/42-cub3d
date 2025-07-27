@@ -6,13 +6,13 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:09:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 09:09:30 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 10:53:01 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int		ft_key_press(int key_code, t_game *g)
+int	ft_key_press(int key_code, t_game *g)
 {
 	if (key_code == XK_ESCAPE)
 		g->k->esc = true;

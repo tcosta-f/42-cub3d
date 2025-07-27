@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:45:33 by alm               #+#    #+#             */
-/*   Updated: 2025/07/13 16:06:37 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:18:29 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_free_game(t_game **game)
 			mlx_destroy_window((*game)->mlx, (*game)->win);
 		if ((*game)->mlx != NULL)
 		{
-			if((*game)->img->img)
+			if ((*game)->img->img)
 				mlx_destroy_image((*game)->mlx, (*game)->img->img);
 			ft_safe_free((*game)->img);
 			mlx_destroy_display((*game)->mlx);

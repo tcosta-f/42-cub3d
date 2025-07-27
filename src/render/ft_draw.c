@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_draw.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/27 11:17:58 by alm               #+#    #+#             */
+/*   Updated: 2025/07/27 11:18:36 by alm              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/cub3d.h"
 
 static int	get_color(void *texture, int x, int y, int tile_size)
@@ -12,7 +24,7 @@ static int	get_color(void *texture, int x, int y, int tile_size)
 	color |= *(unsigned char *)(temp + 1) << 8;
 	color |= *(unsigned char *)temp;
 	return (color);
-} 
+}
 
 void	define_texture(t_game *g, int start, int line_height)
 {
@@ -41,7 +53,7 @@ void	define_column(t_game *g, int *line_height, int *start, int *end)
 		*end = WIN_H;
 }
 
-void	draw(t_game *g, int x, t_img *texture)
+static void	ft_draw(t_game *g, int x, t_img *texture)
 {
 	int	color;
 
@@ -49,7 +61,7 @@ void	draw(t_game *g, int x, t_img *texture)
 	ft_draw_pixel(g->img, x, g->rc->start, color);
 }
 
-void	draw_column(t_game *g, int x)
+void	ft_draw_column(t_game *g, int x)
 {
 	int	line_height;
 
@@ -60,13 +72,13 @@ void	draw_column(t_game *g, int x)
 		g->rc->tex_y = (int)g->rc->tex_pos & (g->cfg->h_img - 1);
 		g->rc->tex_pos += g->rc->step;
 		if (g->rc->wall_side == 1 && g->rc->dir_y < 0)
-			draw(g, x, g->cfg->so_img);
+			ft_draw(g, x, g->cfg->so_img);
 		else if (g->rc->wall_side == 1 && g->rc->dir_y > 0)
-			draw(g, x, g->cfg->no_img);
+			ft_draw(g, x, g->cfg->no_img);
 		else if (g->rc->wall_side == 0 && g->rc->dir_x < 0)
-			draw(g, x, g->cfg->we_img);
+			ft_draw(g, x, g->cfg->we_img);
 		else if (g->rc->wall_side == 0 && g->rc->dir_x > 0)
-			draw(g, x, g->cfg->ea_img);
+			ft_draw(g, x, g->cfg->ea_img);
 		g->rc->start++;
 	}
 }

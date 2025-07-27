@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 21:23:39 by alm               #+#    #+#             */
-/*   Updated: 2025/07/25 17:57:34 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:17:45 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_draw_pixel(t_img *img, int x, int y, int color)
 	if (x < 0 || y < 0 || x >= WIN_W || y >= WIN_H)
 		return ;
 	i = img -> bpp - 8;
-	pixel = (unsigned char *)(img -> add + (y * img -> line_len \
-	+ x * (img -> bpp / 8)));
+	pixel = (unsigned char *)(img -> add + (y * img -> line_len
+				+ x * (img -> bpp / 8)));
 	while (i >= 0)
 	{
 		if (img -> endian != 0)
