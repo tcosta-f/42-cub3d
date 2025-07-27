@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 22:04:27 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 09:02:16 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 09:42:14 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,7 @@
 # define XK_SS			0x0073  /* U+0073 LATIN SMALL LETTER S - down */
 # define XK_SW			0x0077  /* U+0077 LATIN SMALL LETTER W - up */
 
-/* Ray Casting */
-# define PI 3.1415
-# define DR 0.0174533 // 1 Degree Radian
-
-# define MAX_DIST 1000000000
-# define MAX_RAYS 400
-# define FOV 60
-# define WALL_H 700
-
-# define PREC_DN 0.00001
-# define PREC_UP 1
-
+/* Game Constants */
 # define L_SPD 0.05 // Linear Speed
 # define A_SPD 0.05 // Angular Speed
 # define PLANE -0.66 // Plane Distance

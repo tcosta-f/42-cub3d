@@ -50,7 +50,7 @@ void	define_column(t_game *g, int *line_height, int *start, int *end)
 		*start = 0;
 	*end = *line_height / 2 + WIN_H / 2;
 	if (*end >= WIN_H)
-		*end = WIN_H - 1;
+		*end = WIN_H;
 }
 
 void	draw(t_game *g, int x, t_img *texture)

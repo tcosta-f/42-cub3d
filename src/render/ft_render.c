@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:44:22 by alm               #+#    #+#             */
-/*   Updated: 2025/07/26 11:42:39 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 09:40:57 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	init_raycasting(t_game *game, int x)
 	game->rc->map_x = game->p->pos_x;
 	game->rc->map_y = game->p->pos_y;
 	game->rc->cam_x = 2 * x / (double) WIN_W - 1;
-	game->rc->dir_x = game->p->dir_x + game->p->plane_x * game->rc->cam_x;
-	game->rc->dir_y = game->p->dir_y + game->p->plane_y * game->rc->cam_x;
+	game->rc->dir_x = (game->p->dir_x + game->p->plane_x * game->rc->cam_x);
+	game->rc->dir_y = (game->p->dir_y + game->p->plane_y * game->rc->cam_x);
 }
 
 static void	ft_raycast(t_game *g)
@@ -119,9 +119,9 @@ static void	ft_raycast(t_game *g)
 		get_step(g);
 		digital_differential_analyser(g);
 		if (g->rc->wall_side == 0)
-			g->rc->perpwalldist = ((g->rc->side_dist_x - g->rc->delta_dist_x));
+			g->rc->perpwalldist = (g->rc->side_dist_x - g->rc->delta_dist_x);
 		else
-			g->rc->perpwalldist = ((g->rc->side_dist_y - g->rc->delta_dist_y));
+			g->rc->perpwalldist = (g->rc->side_dist_y - g->rc->delta_dist_y);
 		draw_column(g, x);
 		x++;
 	}

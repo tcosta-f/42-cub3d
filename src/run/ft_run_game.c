@@ -7,6 +7,8 @@ void	ft_init_game(t_game *game)
 	game->img->add = mlx_get_data_addr(game->img->img,
 		&(game->img->bpp), &(game->img->line_len),
 		&(game->img->endian));
+	game->p->pos_x += 0.5;
+	game->p->pos_y += 0.5;
 	mlx_hook(game->win, 2, (1L << 0), ft_key_press, game);
 	mlx_hook(game->win, 3, (1L << 1), ft_key_release, game);
 	mlx_hook(game->win, 17, 0, ft_handle_exit, game);

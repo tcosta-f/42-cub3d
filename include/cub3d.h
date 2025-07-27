@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/25 17:46:21 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 09:07:05 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,18 +211,13 @@ bool	ft_check_map_enclosed(t_game *game);
 
 /* Utils */
 int		ft_atoi_pos(const char *ptr);
-int		ft_print_strs(char **strs);
-float	ft_dist(float ax, float ay, float bx, float by);
 void	ft_draw_pixel(t_img *img, int x, int y, int color);
-void	ft_print_player(t_player *p);
-// DELETE
-char* 	concat_strings(char result[1000], int count, ...);
 
 /* Game Engine */
 void	ft_init_game(t_game *game);
 void	ft_run_game(t_game *game);
 void	ft_handle_keys(t_game *game);
-int		ft_key_press(int key_code, t_game *game);
+int		ft_key_press(int key_code, t_game *g);
 int		ft_key_release(int key_code, t_game *game);
 
 /* Render */
