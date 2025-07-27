@@ -1,17 +1,5 @@
 #include "../../include/cub3d.h"
 
-void	img_pix_put(t_game *g, int x, int y, int color)
-{
-	char	*pixel;
-
-	if (y < 0 || y > WIN_H - 1 || x < 0
-		|| x > WIN_W - 1)
-		return ;
-	pixel = (g->img->add + (y * g->img->line_len
-				+ x * (g->img->bpp / 8)));
-	*(int *)pixel = color;
-}
-
 static int	get_color(void *texture, int x, int y, int tile_size)
 {
 	int		color;
@@ -58,7 +46,7 @@ void	draw(t_game *g, int x, t_img *texture)
 	int	color;
 
 	color = get_color(texture, g->rc->tex_x, g->rc->tex_y, g->cfg->h_img);
-	img_pix_put(g, x, g->rc->start, color);
+	ft_draw_pixel(g->img, x, g->rc->start, color);
 }
 
 void	draw_column(t_game *g, int x)
