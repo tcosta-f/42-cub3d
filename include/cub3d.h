@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:30:29 by t-costaf          #+#    #+#             */
-/*   Updated: 2025/07/25 17:46:21 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 11:01:52 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx/mlx.h"
-# include "./constants.h"
+# include "./cub3d_consts.h"
 # include "colors.h"
 # include "errors.h"
 # include <math.h>
@@ -142,9 +142,9 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double		plane_x;
-	double		plane_y;
-	char		dir;
+	double	plane_x;
+	double	plane_y;
+	char	dir;
 }	t_player;
 
 typedef struct s_raycast
@@ -211,26 +211,18 @@ bool	ft_check_map_enclosed(t_game *game);
 
 /* Utils */
 int		ft_atoi_pos(const char *ptr);
-int		ft_print_strs(char **strs);
-float	ft_dist(float ax, float ay, float bx, float by);
 void	ft_draw_pixel(t_img *img, int x, int y, int color);
-void	ft_print_player(t_player *p);
-// DELETE
-char* 	concat_strings(char result[1000], int count, ...);
 
 /* Game Engine */
 void	ft_init_game(t_game *game);
 void	ft_run_game(t_game *game);
 void	ft_handle_keys(t_game *game);
-int		ft_key_press(int key_code, t_game *game);
+int		ft_key_press(int key_code, t_game *g);
 int		ft_key_release(int key_code, t_game *game);
 
 /* Render */
-int			ft_render(t_game *game);
-void		ft_rc_reset(t_game *game, t_raycast *rc);
-void		ft_pick_wall(t_game *game, t_raycast *rc);
-void		ft_pick_texture(t_game *game, t_raycast *rc);
-void		ft_draw_image(t_game *game, t_raycast *rc);
-void		draw_column(t_game *g, int x);
+int		ft_render(t_game *game);
+void	ft_raycast(t_game *g);
+void	ft_draw_column(t_game *g, int x);
 
 #endif

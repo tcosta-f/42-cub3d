@@ -6,7 +6,7 @@
 /*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/25 17:51:40 by alm              ###   ########.fr       */
+/*   Updated: 2025/07/27 10:14:47 by alm              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param mlx 		MLX to test
  * @return true 	All good
  * @return false 	Can't read it.
- */
+*/
 
 void	ft_load_texture(char *file, void **img, t_game *g, void *mlx)
 {
