@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:32:30 by alm               #+#    #+#             */
-/*   Updated: 2025/07/27 11:23:40 by alm              ###   ########.fr       */
+/*   Updated: 2025/08/08 10:12:51 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ static bool	ft_check_player(t_game *game)
  */
 bool	ft_check_map(t_game *game)
 {
+	if (game->map->data == NULL)
+		ft_error_free_all_exit(game, ERR_CANNOT_RD_FL, true, 1);
 	if (!ft_check_chars(game))
 		return (false);
 	if (!ft_check_player(game))
