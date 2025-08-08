@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_load_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alm <alm@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: bschwell <bschwell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 17:42:42 by bschwell          #+#    #+#             */
-/*   Updated: 2025/07/27 10:14:47 by alm              ###   ########.fr       */
+/*   Updated: 2025/08/08 09:53:45 by bschwell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_load_texture(char *file, void **img, t_game *g, void *mlx)
 
 	temp_w = -1;
 	temp_h = -1;
+	if (file == NULL)
+		ft_error_free_all_exit(g, ERR_READ_TEXTURE, true, 3);
 	*img = mlx_xpm_file_to_image(mlx, file, &temp_w, &temp_h);
 	if (!img || temp_w <= 0 || temp_h <= 0)
 		ft_error_free_all_exit(g, ERR_READ_TEXTURE, true, 3);
